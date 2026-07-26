@@ -9,6 +9,7 @@ import {
   type NavigationItem,
   visibleNavigationItems,
 } from "../navigation/config";
+import { AboutPage } from "./AboutPage";
 import { Homepage } from "./Homepage";
 
 const isActiveRoute = (pathname: string, href: string) =>
@@ -285,6 +286,8 @@ export function SiteShell() {
 
       {isHomepage ? (
         <Homepage />
+      ) : pathname === "/about" ? (
+        <AboutPage />
       ) : (
         <main className="structure-preview">
           <div className="structure-card">

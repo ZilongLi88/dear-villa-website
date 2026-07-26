@@ -131,5 +131,79 @@ export const zhCN = {
         galleryTerrace: "棕榈树环绕的花园露台与户外餐桌",
       },
     },
+    about: {
+      hero: {
+        eyebrow: "关于 Dear Villa",
+        title: "由自然与款待共同塑造的庄园",
+        intro:
+          "这座临水而居的奥克兰私人庄园，以花园、开阔水景与细致款待，为人与人之间的连接留出从容空间。",
+      },
+      introduction: {
+        eyebrow: "我们的庄园",
+        title: "安静而独特，自然而丰盛",
+        lead:
+          "Dear Villa 不只是一处优美景致，更拥有一种舒缓从容的气质，承载真挚相聚、静心停留与共同体验。",
+        body:
+          "庄园从温暖私密的室内自然延伸至辽阔景观。悉心安排的细节与质朴自然在此相遇，让每一次到访都拥有属于自己的节奏与意义。",
+      },
+      values: {
+        eyebrow: "Dear Villa 的气质",
+        title: "我们所珍视的",
+        place: {
+          title: "属于此地的感受",
+          body:
+            "花园、成荫树木、开阔水面与温暖室内相互映衬，形成与周围环境不可分割的庄园体验。",
+        },
+        hospitality: {
+          title: "真诚而细致的款待",
+          body:
+            "我们重视恰到好处的照顾与真挚欢迎，让每次相聚和停留都保持专属、贴心而自然。",
+        },
+        pace: {
+          title: "留给当下的时间",
+          body:
+            "庄园让人暂停匆忙，专注彼此，在不被催促的节奏中感受每一个值得珍惜的时刻。",
+        },
+      },
+      pathways: {
+        eyebrow: "继续探索",
+        title: "走近庄园的故事与风景",
+        intro:
+          "循着庄园的历史，或从景观、室内与细节之中，感受今日 Dear Villa 的独特气质。",
+        history: {
+          eyebrow: "庄园历史",
+          title: "Dear Villa 背后的故事",
+          body:
+            "了解庄园的起点、延续至今的理念，以及它与周边自然景观之间的深厚联系。",
+          cta: "阅读庄园历史",
+        },
+        gallery: {
+          eyebrow: "图片集",
+          title: "在影像中细看庄园",
+          body:
+            "通过精选影像，探索 Dear Villa 的花园、室内、水景，以及散落庄园各处的安静细节。",
+          cta: "查看图片集",
+        },
+      },
+      setting: {
+        quote:
+          "一处地方可以既开阔又亲密，让每一次相聚都有空间，慢慢成为自己的故事。",
+        attribution: "Dear Villa 的庄园精神",
+      },
+      contact: {
+        eyebrow: "体验庄园",
+        title: "开启你的 Dear Villa 故事",
+        body:
+          "无论你正在计划相聚、停留，或一段用心安排的体验，我们都期待聆听你的想法。",
+        cta: "联系 Dear Villa",
+      },
+      images: {
+        hero: "倒映池塘与景观花园之后的 Dear Villa 主建筑",
+        introduction: "Dear Villa 主建筑、泳池与周边草坪的航拍景观",
+        history: "Dear Villa 主建筑内洒满阳光的木质楼梯",
+        gallery: "Dear Villa 主建筑、泳池、花园与岸线的正上方航拍",
+        setting: "Dear Villa 庄园下方平静海湾中停泊的帆船",
+      },
+    },
   },
 } as const;

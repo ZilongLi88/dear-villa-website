@@ -288,7 +288,7 @@ function ContactCta() {
   );
 }
 
-function Footer() {
+export function Footer() {
   const { t } = useTranslation();
 
   return (

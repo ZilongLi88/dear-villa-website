@@ -140,5 +140,83 @@ export const en = {
         galleryTerrace: "Garden terrace with palms and outdoor table",
       },
     },
+    about: {
+      hero: {
+        eyebrow: "About Dear Villa",
+        title: "An estate shaped by nature and welcome",
+        intro:
+          "A private Auckland setting where gardens, water, and considered hospitality create space for people to connect.",
+      },
+      introduction: {
+        eyebrow: "Our Place",
+        title: "Quietly distinctive, naturally generous",
+        lead:
+          "Dear Villa is more than a beautiful setting. It is a place with an unhurried spirit—open to meaningful gatherings, restorative stays, and shared experiences.",
+        body:
+          "The residence and its grounds move easily between intimate rooms and expansive views. Throughout the estate, thoughtful details meet the simplicity of nature, giving every visit its own rhythm and sense of occasion.",
+      },
+      values: {
+        eyebrow: "The Dear Villa Character",
+        title: "What guides the estate",
+        place: {
+          title: "A sense of place",
+          body:
+            "Gardens, mature trees, open water, and warm interiors create an experience inseparable from its surroundings.",
+        },
+        hospitality: {
+          title: "Personal hospitality",
+          body:
+            "We favour thoughtful attention and genuine welcome, allowing each gathering or stay to feel considered and individual.",
+        },
+        pace: {
+          title: "Time to be present",
+          body:
+            "The estate offers room to pause, connect, and enjoy moments without rushing from one experience to the next.",
+        },
+      },
+      pathways: {
+        eyebrow: "Explore Further",
+        title: "Discover the story and setting",
+        intro:
+          "Follow the estate’s story or explore the details, views, and atmosphere that define Dear Villa today.",
+        history: {
+          eyebrow: "Our History",
+          title: "The story behind Dear Villa",
+          body:
+            "Discover the beginnings of the estate, the ideas that continue to shape it, and its connection with the surrounding landscape.",
+          cta: "Read Our History",
+        },
+        gallery: {
+          eyebrow: "Gallery",
+          title: "See the estate in detail",
+          body:
+            "Explore a curated collection of gardens, interiors, water views, and the quiet details found throughout Dear Villa.",
+          cta: "View the Gallery",
+        },
+      },
+      setting: {
+        quote:
+          "A place can feel both expansive and personal—giving every gathering room to become its own story.",
+        attribution: "The spirit of Dear Villa",
+      },
+      contact: {
+        eyebrow: "Experience the Estate",
+        title: "Begin your Dear Villa story",
+        body:
+          "Whether you are planning a gathering, a stay, or a considered experience, we would be pleased to hear what you have in mind.",
+        cta: "Contact Dear Villa",
+      },
+      images: {
+        hero:
+          "Dear Villa residence beyond a reflective pond and landscaped gardens",
+        introduction:
+          "Aerial view of Dear Villa residence, swimming pool, and surrounding lawns",
+        history: "Sunlit timber staircase inside the Dear Villa residence",
+        gallery:
+          "Aerial view directly above Dear Villa, its pool, gardens, and shoreline",
+        setting:
+          "Sailing boats resting on the calm harbour below the Dear Villa estate",
+      },
+    },
   },
 } as const;
