@@ -9,6 +9,7 @@ import {
   type NavigationItem,
   visibleNavigationItems,
 } from "../navigation/config";
+import { Homepage } from "./Homepage";
 
 const isActiveRoute = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -57,7 +58,7 @@ function DesktopNavigation({
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <nav className="desktop-navigation" aria-label="Primary navigation">
+    <nav className="desktop-navigation" aria-label={t("navigation.primary")}>
       <ul>
         {items.map((item) => {
           const hasChildren = Boolean(item.children?.length);
@@ -156,7 +157,7 @@ function MobileNavigation({
           <span aria-hidden="true">×</span>
         </button>
       </div>
-      <nav aria-label="Mobile navigation">
+      <nav aria-label={t("navigation.mobile")}>
         <ul className="mobile-navigation-list">
           {items.map((item) => {
             const hasChildren = Boolean(item.children?.length);
@@ -219,7 +220,9 @@ export function SiteShell() {
   const pathname = usePathname();
   const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
   const items = useMemo(() => visibleNavigationItems(), []);
+  const isHomepage = pathname === "/";
 
   useEffect(() => {
     const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
@@ -236,9 +239,22 @@ export function SiteShell() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    if (!isHomepage) {
+      return;
+    }
+
+    const updateHeader = () => setHeaderScrolled(window.scrollY > 48);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, [isHomepage]);
+
   return (
-    <div className="site-shell">
-      <header className="site-header">
+    <div className={`site-shell ${isHomepage ? "site-shell-home" : ""}`}>
+      <header
+        className={`site-header ${isHomepage ? "site-header-home" : ""} ${headerScrolled ? "site-header-scrolled" : ""}`}
+      >
         <Link href="/" className="wordmark" aria-label="Dear Villa home">
           <span>Dear Villa</span>
           <small>Estate</small>
@@ -267,17 +283,21 @@ export function SiteShell() {
         onClose={() => setMobileOpen(false)}
       />
 
-      <main className="structure-preview">
-        <div className="structure-card">
-          <p className="eyebrow">{t("shell.eyebrow")}</p>
-          <h1>{t("shell.title")}</h1>
-          <p>{t("shell.intro")}</p>
-          <div className="route-indicator">
-            <span>{t("shell.currentRoute")}</span>
-            <code>{pathname}</code>
+      {isHomepage ? (
+        <Homepage />
+      ) : (
+        <main className="structure-preview">
+          <div className="structure-card">
+            <p className="section-eyebrow">{t("shell.eyebrow")}</p>
+            <h1>{t("shell.title")}</h1>
+            <p>{t("shell.intro")}</p>
+            <div className="route-indicator">
+              <span>{t("shell.currentRoute")}</span>
+              <code>{pathname}</code>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      )}
     </div>
   );
 }
