@@ -10,6 +10,8 @@ export const zhCN = {
       corporateEvents: "企业活动",
       internationalPrograms: "国际项目",
       accommodation: "住宿",
+      boutiqueStay: "精品住宿",
+      healingRetreat: "疗愈静修",
       experiences: "特色体验",
       teaRoom: "茶室",
       privateDining: "私人餐饮",
@@ -20,6 +22,8 @@ export const zhCN = {
       expandSection: "展开{{section}}菜单",
       primary: "主导航",
       mobile: "移动端导航",
+      skipToContent: "跳至主要内容",
+      homeLabel: "Dear Villa 首页",
     },
     language: {
       label: "选择语言",
@@ -70,6 +74,8 @@ export const zhCN = {
         body:
           "在宽敞明亮的起居空间安住，醒来便见花园与水景，从清晨到夜晚，慢慢感受庄园的宁静气质。",
         cta: "查看住宿",
+        boutiqueStay: "精品住宿",
+        healingRetreat: "疗愈静修",
       },
       experiences: {
         eyebrow: "Dear Villa 特色体验",
@@ -100,6 +106,11 @@ export const zhCN = {
         title: "漫步庄园之间",
         body: "花园、室内、水景，以及构成 Dear Villa 独特气质的细微片段。",
         cta: "查看图片集",
+        carouselLabel: "Dear Villa 庄园图片轮播",
+        carouselRole: "图片轮播",
+        previous: "查看上一张庄园图片",
+        next: "查看下一张庄园图片",
+        position: "第 {{current}} 张，共 {{total}} 张",
       },
       contact: {
         eyebrow: "开启对话",

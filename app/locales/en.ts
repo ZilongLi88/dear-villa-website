@@ -10,6 +10,8 @@ export const en = {
       corporateEvents: "Corporate Events",
       internationalPrograms: "International Programs",
       accommodation: "Accommodation",
+      boutiqueStay: "Boutique Stay",
+      healingRetreat: "Healing Retreat",
       experiences: "Experiences",
       teaRoom: "Tea Room",
       privateDining: "Private Dining",
@@ -20,6 +22,8 @@ export const en = {
       expandSection: "Expand {{section}} menu",
       primary: "Primary navigation",
       mobile: "Mobile navigation",
+      skipToContent: "Skip to main content",
+      homeLabel: "Dear Villa home",
     },
     language: {
       label: "Select language",
@@ -71,6 +75,8 @@ export const en = {
         body:
           "Settle into generous living spaces, wake to gardens and water views, and experience the quiet character of the estate from morning to evening.",
         cta: "View Accommodation",
+        boutiqueStay: "Boutique Stay",
+        healingRetreat: "Healing Retreat",
       },
       experiences: {
         eyebrow: "Dear Villa Experiences",
@@ -103,6 +109,11 @@ export const en = {
         body:
           "Gardens, interiors, water, and the small details that give Dear Villa its distinctive character.",
         cta: "View the Gallery",
+        carouselLabel: "Dear Villa estate gallery",
+        carouselRole: "carousel",
+        previous: "View previous estate image",
+        next: "View next estate image",
+        position: "Image {{current}} of {{total}}",
       },
       contact: {
         eyebrow: "Begin a Conversation",

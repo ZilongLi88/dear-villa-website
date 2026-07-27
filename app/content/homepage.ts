@@ -58,37 +58,31 @@ export const homepageImages = {
     {
       src: galleryAerial.src,
       altKey: "homepage.images.galleryAerial",
-      className: "gallery-image-tall",
       position: "center center",
     },
     {
       src: galleryHarbour.src,
       altKey: "homepage.images.galleryHarbour",
-      className: "gallery-image-wide",
       position: "center center",
     },
     {
       src: galleryStaircase.src,
       altKey: "homepage.images.galleryStaircase",
-      className: "gallery-image-standard",
       position: "center center",
     },
     {
       src: galleryTelescope.src,
       altKey: "homepage.images.galleryTelescope",
-      className: "gallery-image-standard",
       position: "center center",
     },
     {
       src: galleryPiano.src,
       altKey: "homepage.images.galleryPiano",
-      className: "gallery-image-wide",
       position: "center center",
     },
     {
       src: galleryTerrace.src,
       altKey: "homepage.images.galleryTerrace",
-      className: "gallery-image-tall",
       position: "center center",
     },
   ],

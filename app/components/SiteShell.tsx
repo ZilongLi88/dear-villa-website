@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18n, { LANGUAGE_STORAGE_KEY } from "../i18n/client";
 import {
@@ -57,9 +57,20 @@ function DesktopNavigation({
 }) {
   const { t } = useTranslation();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const triggerRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   return (
-    <nav className="desktop-navigation" aria-label={t("navigation.primary")}>
+    <nav
+      className="desktop-navigation"
+      aria-label={t("navigation.primary")}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && openDropdown) {
+          event.preventDefault();
+          triggerRefs.current[openDropdown]?.focus();
+          setOpenDropdown(null);
+        }
+      }}
+    >
       <ul>
         {items.map((item) => {
           const hasChildren = Boolean(item.children?.length);
@@ -75,10 +86,13 @@ function DesktopNavigation({
             >
               <div className="desktop-link-row">
                 <Link
+                  ref={(element) => {
+                    triggerRefs.current[item.id] = element;
+                  }}
                   href={item.href}
                   className={`${active ? "is-active" : ""} ${item.cta ? "contact-link" : ""}`}
                   aria-current={active ? "page" : undefined}
-                  onFocus={() => hasChildren && setOpenDropdown(item.id)}
+                  onFocus={() => setOpenDropdown(hasChildren ? item.id : null)}
                 >
                   {t(item.labelKey)}
                 </Link>
@@ -136,6 +150,44 @@ function MobileNavigation({
 }) {
   const { t } = useTranslation();
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const panel = panelRef.current;
+    const focusable = panel?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled])',
+    );
+    focusable?.[0]?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !focusable?.length) {
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    panel?.addEventListener("keydown", handleKeyDown);
+    return () => panel?.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
 
   const toggleGroup = (id: string) => {
     setExpandedGroups((groups) =>
@@ -146,7 +198,7 @@ function MobileNavigation({
   };
 
   return (
-    <div className="mobile-panel" hidden={!isOpen}>
+    <div className="mobile-panel" hidden={!isOpen} ref={panelRef}>
       <div className="mobile-panel-header">
         <span className="mobile-wordmark">Dear Villa</span>
         <button
@@ -222,8 +274,13 @@ export function SiteShell() {
   const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [headerScrolled, setHeaderScrolled] = useState(false);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const items = useMemo(() => visibleNavigationItems(), []);
   const isHomepage = pathname === "/";
+  const closeMobileNavigation = useCallback(() => {
+    setMobileOpen(false);
+    window.requestAnimationFrame(() => mobileMenuButtonRef.current?.focus());
+  }, []);
 
   useEffect(() => {
     const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
@@ -253,10 +310,13 @@ export function SiteShell() {
 
   return (
     <div className={`site-shell ${isHomepage ? "site-shell-home" : ""}`}>
+      <a className="skip-link" href="#main-content">
+        {t("navigation.skipToContent")}
+      </a>
       <header
         className={`site-header ${isHomepage ? "site-header-home" : ""} ${headerScrolled ? "site-header-scrolled" : ""}`}
       >
-        <Link href="/" className="wordmark" aria-label="Dear Villa home">
+        <Link href="/" className="wordmark" aria-label={t("navigation.homeLabel")}>
           <span>Dear Villa</span>
           <small>Estate</small>
         </Link>
@@ -264,6 +324,7 @@ export function SiteShell() {
         <div className="header-actions">
           <LanguageSwitch />
           <button
+            ref={mobileMenuButtonRef}
             type="button"
             className="mobile-menu-toggle"
             aria-label={t("navigation.openMenu")}
@@ -281,7 +342,7 @@ export function SiteShell() {
         items={items}
         pathname={pathname}
         isOpen={mobileOpen}
-        onClose={() => setMobileOpen(false)}
+        onClose={closeMobileNavigation}
       />
 
       {isHomepage ? (
@@ -289,7 +350,7 @@ export function SiteShell() {
       ) : pathname === "/about" ? (
         <AboutPage />
       ) : (
-        <main className="structure-preview">
+        <main className="structure-preview" id="main-content">
           <div className="structure-card">
             <p className="section-eyebrow">{t("shell.eyebrow")}</p>
             <h1>{t("shell.title")}</h1>

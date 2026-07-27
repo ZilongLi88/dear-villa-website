@@ -5,6 +5,8 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { homepageImages } from "../content/homepage";
+import { visibleNavigationItems } from "../navigation/config";
+import { EstateCarousel } from "./EstateCarousel";
 
 type SectionHeaderProps = {
   eyebrowKey: string;
@@ -42,6 +44,10 @@ type EditorialSplitProps = {
   bodyKey: string;
   ctaKey: string;
   href: string;
+  additionalLinks?: readonly {
+    labelKey: string;
+    href: string;
+  }[];
   reverse?: boolean;
   tone?: "ivory" | "paper";
 };
@@ -54,6 +60,7 @@ function EditorialSplit({
   bodyKey,
   ctaKey,
   href,
+  additionalLinks = [],
   reverse = false,
   tone = "ivory",
 }: EditorialSplitProps) {
@@ -77,7 +84,14 @@ function EditorialSplit({
         <p className="section-eyebrow">{t(eyebrowKey)}</p>
         <h2>{t(titleKey)}</h2>
         <p>{t(bodyKey)}</p>
-        <TextLink href={href}>{t(ctaKey)}</TextLink>
+        <div className="editorial-links">
+          <TextLink href={href}>{t(ctaKey)}</TextLink>
+          {additionalLinks.map((link) => (
+            <TextLink key={link.href} href={link.href}>
+              {t(link.labelKey)}
+            </TextLink>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -257,18 +271,10 @@ function GalleryPreview() {
         />
         <TextLink href="/about/gallery">{t("homepage.gallery.cta")}</TextLink>
       </div>
-      <div className="gallery-preview-grid">
-        {homepageImages.gallery.map((image) => (
-          <figure key={image.altKey} className={image.className}>
-            <img
-              src={image.src}
-              alt={t(image.altKey)}
-              style={{ objectPosition: image.position }}
-              loading="lazy"
-            />
-          </figure>
-        ))}
-      </div>
+      <EstateCarousel
+        images={homepageImages.gallery}
+        labelKey="homepage.gallery.carouselLabel"
+      />
     </section>
   );
 }
@@ -290,6 +296,9 @@ function ContactCta() {
 
 export function Footer() {
   const { t } = useTranslation();
+  const footerItems = visibleNavigationItems().filter(
+    (item) => item.id !== "home",
+  );
 
   return (
     <footer className="site-footer">
@@ -298,11 +307,11 @@ export function Footer() {
         <p>{t("homepage.footer.intro")}</p>
       </div>
       <nav className="footer-nav" aria-label={t("homepage.footer.navigation")}>
-        <Link href="/about">{t("navigation.about")}</Link>
-        <Link href="/events">{t("navigation.events")}</Link>
-        <Link href="/accommodation">{t("navigation.accommodation")}</Link>
-        <Link href="/experiences">{t("navigation.experiences")}</Link>
-        <Link href="/contact">{t("navigation.contact")}</Link>
+        {footerItems.map((item) => (
+          <Link href={item.href} key={item.id}>
+            {t(item.labelKey)}
+          </Link>
+        ))}
       </nav>
       <div className="footer-meta">
         <p>{t("homepage.footer.location")}</p>
@@ -315,7 +324,7 @@ export function Footer() {
 export function Homepage() {
   return (
     <>
-      <main className="homepage">
+      <main className="homepage" id="main-content">
         <HomepageHero />
         <EditorialSplit
           id="about-preview"
@@ -333,7 +342,7 @@ export function Homepage() {
           titleKey="homepage.international.title"
           bodyKey="homepage.international.body"
           ctaKey="homepage.international.cta"
-          href="/events/international-programs"
+          href="/international-programs"
           reverse
           tone="paper"
         />
@@ -344,6 +353,16 @@ export function Homepage() {
           bodyKey="homepage.accommodation.body"
           ctaKey="homepage.accommodation.cta"
           href="/accommodation"
+          additionalLinks={[
+            {
+              labelKey: "homepage.accommodation.boutiqueStay",
+              href: "/accommodation/boutique-stay",
+            },
+            {
+              labelKey: "homepage.accommodation.healingRetreat",
+              href: "/accommodation/healing-retreat",
+            },
+          ]}
         />
         <ExperiencesPreview />
         <HospitalityPreview />

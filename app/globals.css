@@ -57,6 +57,34 @@ a {
   text-decoration: none;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  margin: -1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 12px 18px;
+  background: var(--color-ivory-50);
+  color: var(--color-forest-900);
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-shell {
   min-height: 100vh;
 }
@@ -678,6 +706,13 @@ a {
   max-width: 560px;
 }
 
+.editorial-links {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2px clamp(24px, 3vw, 42px);
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -862,43 +897,101 @@ a {
   margin-bottom: 4px;
 }
 
-.gallery-preview-grid {
-  display: grid;
-  max-width: 1540px;
-  grid-auto-flow: dense;
-  grid-auto-rows: 250px;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(12px, 1.5vw, 24px);
-  margin: 0 auto;
+.estate-carousel {
+  outline: none;
 }
 
-.gallery-preview-grid figure {
+.estate-carousel:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 6px;
+}
+
+.estate-carousel-viewport {
+  position: relative;
+  height: clamp(420px, 48vw, 680px);
   overflow: hidden;
-  margin: 0;
+  touch-action: pan-y;
 }
 
-.gallery-preview-grid img {
+.estate-carousel-slide {
+  position: absolute;
+  width: min(64vw, 960px);
+  height: 100%;
+  inset-block: 0;
+  left: 50%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) scale(0.86);
+  transition:
+    transform 440ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease;
+}
+
+.estate-carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 600ms ease;
 }
 
-.gallery-preview-grid figure:hover img {
-  transform: scale(1.025);
+.estate-carousel-slide-current {
+  z-index: 2;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
 }
 
-.gallery-image-tall {
-  grid-column: span 4;
-  grid-row: span 2;
+.estate-carousel-slide-previous {
+  z-index: 1;
+  opacity: 0.68;
+  transform: translateX(calc(-150% - 28px)) scale(0.86);
 }
 
-.gallery-image-wide {
-  grid-column: span 5;
+.estate-carousel-slide-next {
+  z-index: 1;
+  opacity: 0.68;
+  transform: translateX(calc(50% + 28px)) scale(0.86);
 }
 
-.gallery-image-standard {
-  grid-column: span 3;
+.estate-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 52px);
+  margin-top: 32px;
+}
+
+.estate-carousel-button {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--forest-deep);
+  cursor: pointer;
+  font-size: 1.25rem;
+  place-items: center;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.estate-carousel-button:hover,
+.estate-carousel-button:focus-visible {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: white;
+}
+
+.estate-carousel-status {
+  min-width: 74px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-align: center;
 }
 
 .contact-cta {
@@ -1289,21 +1382,6 @@ a {
     grid-template-columns: 1.1fr 0.9fr;
   }
 
-  .gallery-preview-grid {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-  }
-
-  .gallery-image-tall {
-    grid-column: span 4;
-  }
-
-  .gallery-image-wide {
-    grid-column: span 5;
-  }
-
-  .gallery-image-standard {
-    grid-column: span 3;
-  }
 }
 
 @media (max-width: 1120px) {
@@ -1433,16 +1511,6 @@ a {
 
   .gallery-preview-heading .text-link {
     margin-top: 0;
-  }
-
-  .gallery-preview-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-
-  .gallery-image-tall,
-  .gallery-image-wide,
-  .gallery-image-standard {
-    grid-column: span 3;
   }
 
   .site-footer {
@@ -1592,21 +1660,20 @@ a {
     padding-inline: 2vw;
   }
 
-  .gallery-preview-grid {
-    grid-auto-rows: 190px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .estate-carousel-viewport {
+    height: clamp(360px, 108vw, 560px);
   }
 
-  .gallery-image-tall,
-  .gallery-image-wide,
-  .gallery-image-standard {
-    grid-column: span 1;
-    grid-row: span 1;
+  .estate-carousel-slide {
+    width: calc(100% - 12vw);
   }
 
-  .gallery-preview-grid figure:nth-child(1),
-  .gallery-preview-grid figure:nth-child(5) {
-    grid-column: span 2;
+  .estate-carousel-slide-previous {
+    transform: translateX(calc(-150% - 14px)) scale(0.9);
+  }
+
+  .estate-carousel-slide-next {
+    transform: translateX(calc(50% + 14px)) scale(0.9);
   }
 
   .contact-cta {

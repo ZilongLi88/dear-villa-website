@@ -158,7 +158,7 @@ export function AboutPage() {
 
   return (
     <>
-      <main className="about-page">
+      <main className="about-page" id="main-content">
         <AboutHero />
         <AboutIntroduction />
         <AboutValues />
@@ -194,4 +194,3 @@ export function AboutPage() {
     </>
   );
 }
-

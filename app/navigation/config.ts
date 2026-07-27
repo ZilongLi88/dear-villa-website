@@ -52,12 +52,6 @@ export const navigationItems: NavigationItem[] = [
         href: "/events/corporate",
         enabled: true,
       },
-      {
-        id: "international-programs",
-        labelKey: "navigation.internationalPrograms",
-        href: "/events/international-programs",
-        enabled: true,
-      },
     ],
   },
   {
@@ -65,6 +59,20 @@ export const navigationItems: NavigationItem[] = [
     labelKey: "navigation.accommodation",
     href: "/accommodation",
     enabled: true,
+    children: [
+      {
+        id: "boutique-stay",
+        labelKey: "navigation.boutiqueStay",
+        href: "/accommodation/boutique-stay",
+        enabled: true,
+      },
+      {
+        id: "healing-retreat",
+        labelKey: "navigation.healingRetreat",
+        href: "/accommodation/healing-retreat",
+        enabled: true,
+      },
+    ],
   },
   {
     id: "experiences",
@@ -85,6 +93,12 @@ export const navigationItems: NavigationItem[] = [
         enabled: true,
       },
     ],
+  },
+  {
+    id: "international-programs",
+    labelKey: "navigation.internationalPrograms",
+    href: "/international-programs",
+    enabled: true,
   },
   {
     id: "membership",

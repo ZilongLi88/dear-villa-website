@@ -44,8 +44,11 @@ test("serves every Phase 1 route directly", async () => {
     "/events",
     "/events/weddings",
     "/events/corporate",
+    "/international-programs",
     "/events/international-programs",
     "/accommodation",
+    "/accommodation/boutique-stay",
+    "/accommodation/healing-retreat",
     "/experiences",
     "/experiences/tea-room",
     "/experiences/private-dining",
@@ -69,6 +72,52 @@ test("keeps Membership disabled in reusable navigation configuration", async () 
   assert.match(config, /filter\(\(child\) => child\.enabled\)/);
 });
 
+test("matches the Version 0.3 information architecture", async () => {
+  const config = await readFile(
+    new URL("../app/navigation/config.ts", import.meta.url),
+    "utf8",
+  );
+
+  const eventsBlock = config.slice(
+    config.indexOf('id: "events"'),
+    config.indexOf('id: "accommodation"'),
+  );
+  const accommodationBlock = config.slice(
+    config.indexOf('id: "accommodation"'),
+    config.indexOf('id: "experiences"'),
+  );
+  const internationalProgramsBlock = config.slice(
+    config.indexOf('id: "international-programs"'),
+    config.indexOf('id: "membership"'),
+  );
+
+  assert.doesNotMatch(eventsBlock, /international-programs/);
+  assert.match(accommodationBlock, /\/accommodation\/boutique-stay/);
+  assert.match(accommodationBlock, /\/accommodation\/healing-retreat/);
+  assert.match(internationalProgramsBlock, /href:\s*"\/international-programs"/);
+});
+
+test("renders the accessible manual homepage gallery carousel", async () => {
+  const response = await render("/");
+  const html = await response.text();
+  const carousel = await readFile(
+    new URL("../app/components/EstateCarousel.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(html, /class="estate-carousel"/);
+  assert.match(html, /aria-roledescription="carousel"/);
+  assert.match(html, /View previous estate image/);
+  assert.match(html, /View next estate image/);
+  assert.doesNotMatch(html, /gallery-preview-grid/);
+  assert.match(carousel, /index - 1 \+ images\.length\) % images\.length/);
+  assert.match(carousel, /index \+ 1\) % images\.length/);
+  assert.match(carousel, /event\.key === "ArrowLeft"/);
+  assert.match(carousel, /event\.key === "ArrowRight"/);
+  assert.match(carousel, /onTouchStart/);
+  assert.match(carousel, /onTouchEnd/);
+});
+
 test("provides English and Simplified Chinese navigation labels", async () => {
   const [english, chinese] = await Promise.all([
     readFile(new URL("../app/locales/en.ts", import.meta.url), "utf8"),
@@ -80,7 +129,10 @@ test("provides English and Simplified Chinese navigation labels", async () => {
     "about",
     "events",
     "accommodation",
+    "boutiqueStay",
+    "healingRetreat",
     "experiences",
+    "internationalPrograms",
     "contact",
     "membership",
   ]) {
