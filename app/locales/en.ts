@@ -142,10 +142,10 @@ export const en = {
         teaRoom:
           "Green glass vase with seasonal branches in a quiet estate interior",
         privateDining:
-          "Vintage record player detail in the Dear Villa living room",
+          "Bright Dear Villa kitchen island opening toward the garden terrace",
         galleryAerial: "Aerial view directly above the Dear Villa residence and pool",
         galleryHarbour: "Sailing boats resting in the harbour below the estate",
-        galleryStaircase: "Sunlit timber staircase inside Dear Villa",
+        galleryStaircase: "Dear Villa living room seating and coffee table",
         galleryTelescope: "Telescope set beside a window at the estate",
         galleryPiano: "Black upright piano in a bright Dear Villa room",
         galleryTerrace: "Garden terrace with palms and outdoor table",
@@ -222,7 +222,7 @@ export const en = {
           "Dear Villa residence beyond a reflective pond and landscaped gardens",
         introduction:
           "Aerial view of Dear Villa residence, swimming pool, and surrounding lawns",
-        history: "Sunlit timber staircase inside the Dear Villa residence",
+        history: "Wooden chairs beside the Dear Villa entrance and garden windows",
         gallery:
           "Aerial view directly above Dear Villa, its pool, gardens, and shoreline",
         setting:
