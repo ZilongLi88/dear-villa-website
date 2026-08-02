@@ -229,5 +229,46 @@ export const en = {
           "Sailing boats resting on the calm harbour below the Dear Villa estate",
       },
     },
+    accommodation: {
+      hero: { title: "Stay at Dear Villa", body: "Wake up to peaceful gardens, elegant interiors, and the quiet charm of Whitford.", cta: "Book Your Stay" },
+      comfort: {
+        title: "A Comfortable Place to Stay",
+        body1: "Every guest room has been thoughtfully prepared to provide a peaceful and comfortable stay.",
+        body2: "Warm natural light, garden views, and carefully selected furnishings create an inviting space to relax after a day of exploring or gathering with family and friends.",
+      },
+      rooms: {
+        title: "Guest Rooms",
+        intro: "Five thoughtfully designed guest rooms, each offering its own unique atmosphere while sharing the same comfort, privacy, and connection to nature.",
+      },
+      amenities: {
+        title: "Included in Every Stay",
+        body: "Every stay includes a range of thoughtful amenities designed to make your visit comfortable and effortless.",
+        items: { wifi: "Complimentary Wi-Fi", parking: "Free Private Parking", kitchen: "Fully Equipped Kitchen", coffee: "Coffee Machine", dishwasher: "Dishwasher", terrace: "Outdoor Terrace", garden: "Garden Access", breakfast: "English Breakfast Available" },
+      },
+      stay: {
+        title: "Your Stay at Dear Villa",
+        body1: "Whether you are planning a weekend escape, travelling with family, or gathering with close friends, Dear Villa offers a peaceful place to slow down and enjoy the beauty of the New Zealand countryside.",
+        body2: "Spend your mornings overlooking the gardens, your afternoons exploring the estate, and your evenings relaxing in comfort.",
+      },
+      cta: {
+        title: "Begin Your Stay",
+        body1: "We look forward to welcoming you to Dear Villa.",
+        body2: "Whether you are travelling for relaxation, celebration, or simply a change of pace, your countryside retreat begins here.",
+        book: "Book Accommodation", contact: "Contact Us",
+      },
+      gallery: { label: "Guest rooms photo story", open: "Open guest room image {{number}}", close: "Close image viewer", previous: "View previous image", next: "View next image" },
+      images: {
+        hero: "Warm brown bedroom at Dear Villa with garden light beyond",
+        comfort: "Layered bed linen and refined furnishings in a Dear Villa guest room",
+        gallery1: "Dear Villa guest bedroom opening onto a peaceful garden view",
+        gallery2: "Burgundy guest bedroom with elegant furnishings at Dear Villa",
+        gallery3: "Dark tiled bathroom with double vanity at Dear Villa",
+        gallery4: "Sunlit Dear Villa bedroom overlooking the garden",
+        gallery5: "Comfortable twin guest bedroom at Dear Villa",
+        gallery6: "Dark tiled guest bathroom at Dear Villa",
+        stay: "Aerial view above the Dear Villa estate, pool, gardens, and shoreline",
+        cta: "Dear Villa swimming pool looking across the landscaped estate",
+      },
+    },
   },
 } as const;

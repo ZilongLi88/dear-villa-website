@@ -216,5 +216,43 @@ export const zhCN = {
         setting: "Dear Villa 庄园下方平静海湾中停泊的帆船",
       },
     },
+    accommodation: {
+      hero: { title: "庄园住宿体验", body: "在宁静花园中醒来，于优雅舒适的空间里放慢脚步。", cta: "预订住宿" },
+      comfort: {
+        title: "舒适自在的居住空间",
+        body1: "每一间客房都经过精心布置，在舒适与宁静之间取得平衡。",
+        body2: "自然采光、花园景观与温暖雅致的陈设，共同营造出轻松惬意的居住氛围，让每一次停留都更加自在。",
+      },
+      rooms: { title: "客房空间", intro: "五间风格各异的客房，共同延续 Dear Villa 一贯的舒适、私密与自然氛围。" },
+      amenities: {
+        title: "每次入住均包含",
+        body: "我们为每一位来宾准备了完善的生活设施，让住宿更加轻松舒适。",
+        items: { wifi: "免费 Wi-Fi", parking: "免费停车", kitchen: "配备完善的厨房", coffee: "咖啡机", dishwasher: "洗碗机", terrace: "户外露台", garden: "花园直达", breakfast: "可提供英式早餐" },
+      },
+      stay: {
+        title: "在 Dear Villa 的一天",
+        body1: "无论是周末度假、家庭旅行，还是好友相聚，Dear Villa 都希望为每一位来宾提供一个放松身心、享受自然的空间。",
+        body2: "在花园中迎接清晨，在庄园中度过悠闲午后，在温暖舒适的环境里结束美好的一天。",
+      },
+      cta: {
+        title: "开启您的庄园之旅",
+        body1: "期待与您在 Dear Villa 相遇。",
+        body2: "无论是悠闲度假、特别庆典，还是短暂远离城市喧嚣，这里都将成为您放松身心的理想去处。",
+        book: "查看住宿", contact: "联系我们",
+      },
+      gallery: { label: "客房影像故事", open: "打开第 {{number}} 张客房图片", close: "关闭图片浏览", previous: "查看上一张图片", next: "查看下一张图片" },
+      images: {
+        hero: "花园光线映入 Dear Villa 温暖雅致的棕色客房",
+        comfort: "Dear Villa 客房内层次细腻的床品与雅致陈设",
+        gallery1: "可欣赏宁静花园景观的 Dear Villa 客房",
+        gallery2: "陈设优雅的 Dear Villa 酒红色客房",
+        gallery3: "Dear Villa 深色瓷砖双洗手台浴室",
+        gallery4: "俯瞰花园、洒满阳光的 Dear Villa 客房",
+        gallery5: "舒适雅致的 Dear Villa 双床客房",
+        gallery6: "Dear Villa 深色瓷砖客用浴室",
+        stay: "Dear Villa 庄园、泳池、花园与岸线的俯视航拍",
+        cta: "望向庄园景观的 Dear Villa 室外泳池",
+      },
+    },
   },
 } as const;
