@@ -19,6 +19,9 @@ if (!i18n.isInitialized) {
       escapeValue: false,
     },
   });
+} else {
+  i18n.addResourceBundle("en", "translation", en.translation, true, true);
+  i18n.addResourceBundle("zh-CN", "translation", zhCN.translation, true, true);
 }
 
 export default i18n;

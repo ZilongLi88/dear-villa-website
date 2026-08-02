@@ -216,6 +216,22 @@ export const zhCN = {
         setting: "Dear Villa 庄园下方平静海湾中停泊的帆船",
       },
     },
+    aboutPage: {
+      hero: { eyebrow: "关于 DEAR VILLA", title: "隐逸于 Whitford 的庄园生活", body: "距离奥克兰市区仅约三十分钟车程，Dear Villa 将自然风光、温暖待客之道与丰富的生活体验融为一体，为每一位来访者打造宁静而难忘的庄园时光。", cta: "探索庄园" },
+      welcome: { title: "欢迎来到 Dear Villa", body1: "Dear Villa 坐落于宁静的 Whitford 乡间，是一座融合自然、人文与生活方式体验的精品庄园。", body2: "宽阔的草坪、成熟的园林与舒适雅致的空间，共同营造出轻松自在的氛围。无论是周末度假、家庭聚会、私人庆典、企业活动，还是文化交流，都能在这里找到属于自己的美好时光。" },
+      slowDown: { title: "放慢脚步，享受当下", body1: "在 Dear Villa，每一处空间都希望让人放慢节奏，重新感受生活。", body2: "清晨品一杯好茶，在泳池旁静静放松，漫步花园，或只是静静欣赏乡间风景，每一次停留都值得细细品味。", body3: "无论是短暂停留，还是悠闲度假，这里都希望为每位来宾留下温暖而珍贵的回忆。" },
+      occasions: {
+        title: "为不同的相聚而设计", intro: "无论是计划一次宁静的庄园住宿、庆祝特别时刻，还是暂时远离日常节奏、亲近自然，Dear Villa 都为每一位来宾准备了细致而丰富的体验。",
+        accommodation: { title: "精品住宿", body: "舒适宁静的庄园住宿空间，适合情侣、家庭及好友共同享受轻松自在的乡间时光。", link: "探索住宿" },
+        events: { title: "私人活动", body: "适合私人庆典、亲友相聚及各类特别活动，在舒适而私密的庄园环境中留下珍贵回忆。", link: "探索活动" },
+        tea: { title: "茶文化体验", body: "在雅致宁静的茶空间中放慢节奏，于茶香与交流之间感受温暖而从容的生活方式。", link: "探索茶室" },
+        privateDining: { title: "私宴体验", body: "在优雅宁静的庄园环境中，享受精心布置的私宴体验。无论是亲友相聚、家庭庆祝，还是特别时刻的晚宴，每一次相聚都值得细细品味。", link: "探索私宴" },
+      },
+      estate: { title: "庄园概览", intro: "Dear Villa 将舒适、自然与人与人之间的连接融入每一个空间。", facts: { residence: "约 457 平方米庄园主建筑", grounds: "约 1.8 公顷私密庄园用地", location: "位于风景宜人的 Whitford", distance: "距离奥克兰市中心约 30 分钟车程" } },
+      vision: { title: "我们的愿景", body1: "Dear Villa 不仅仅是一处目的地，更是一处让人与自然、人与家人、人与朋友重新建立连接的空间。", body2: "我们希望每一位来到这里的客人，都能在宁静的乡野之间，收获放松、喜悦与值得珍藏的回忆。", body3: "期待以真诚的待客之道，迎接每一位远道而来的朋友。" },
+      final: { title: "期待与您相遇", body: "无论您计划一次悠闲度假、一场特别的庆典，还是一次轻松的下午时光，Dear Villa 都期待与您相见。", primary: "查看住宿", secondary: "联系我们" },
+      images: { hero: "Dear Villa 主建筑、泳池与周边草坪的航拍景观", welcome: "Dear Villa 客厅内舒适座椅、温暖木地板与花园光线", slowDown: "Dear Villa 花园景观前精心布置的茶桌与茶器", accommodation: "通向宁静花园景观的 Dear Villa 客房", events: "拥有宽阔岛台与花园景观的 Dear Villa 厨房", tea: "悬于 Dear Villa 茶席上方的煮水壶", privateDining: "Dear Villa 私宴餐桌上精心布置的餐具与席位", estate: "主建筑、露台与花园环绕的 Dear Villa 泳池", vision: "Dear Villa 温暖室内陈设中的唱片机与黑胶唱片", closing: "Dear Villa 庄园下方平静海湾中停泊的帆船" },
+    },
     accommodation: {
       hero: { title: "庄园住宿体验", body: "在宁静花园中醒来，于优雅舒适的空间里放慢脚步。", cta: "预订住宿" },
       comfort: {

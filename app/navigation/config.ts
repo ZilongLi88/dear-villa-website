@@ -38,7 +38,7 @@ export const navigationItems: NavigationItem[] = [
     id: "events",
     labelKey: "navigation.events",
     href: "/events",
-    enabled: true,
+    enabled: false,
     children: [
       {
         id: "weddings",
@@ -64,13 +64,13 @@ export const navigationItems: NavigationItem[] = [
         id: "boutique-stay",
         labelKey: "navigation.boutiqueStay",
         href: "/accommodation/boutique-stay",
-        enabled: true,
+        enabled: false,
       },
       {
         id: "healing-retreat",
         labelKey: "navigation.healingRetreat",
         href: "/accommodation/healing-retreat",
-        enabled: true,
+        enabled: false,
       },
     ],
   },

@@ -36,6 +36,37 @@ test("renders the Dear Villa shell without starter metadata", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
 
+test("resolves About page localization keys to approved English copy", async () => {
+  const response = await render("/about");
+  const html = await response.text();
+
+  assert.doesNotMatch(html, /aboutPage\.[a-zA-Z0-9_.]+/);
+  assert.match(html, /ABOUT DEAR VILLA/);
+  assert.match(html, /A Private Estate in the Heart of Whitford/);
+  assert.match(html, /Welcome to Dear Villa/);
+  assert.match(html, /A Place to Slow Down/);
+  assert.match(html, /Designed for Every Occasion/);
+  assert.match(html, /The Estate/);
+  assert.match(html, /Our Vision/);
+  assert.match(html, /We Look Forward to Welcoming You/);
+});
+
+test("provides matching English and Simplified Chinese About translations", async () => {
+  const [{ default: i18next }, { en }, { zhCN }] = await Promise.all([
+    import("i18next"),
+    import("../app/locales/en.ts"),
+    import("../app/locales/zh-CN.ts"),
+  ]);
+  const instance = i18next.createInstance();
+  await instance.init({ resources: { en, "zh-CN": zhCN }, lng: "en" });
+
+  assert.equal(instance.t("aboutPage.hero.title"), "A Private Estate in the Heart of Whitford");
+  assert.equal(instance.t("aboutPage.final.secondary"), "Contact Us");
+  await instance.changeLanguage("zh-CN");
+  assert.equal(instance.t("aboutPage.hero.title"), "隐逸于 Whitford 的庄园生活");
+  assert.equal(instance.t("aboutPage.final.secondary"), "联系我们");
+});
+
 test("serves every Phase 1 route directly", async () => {
   const routes = [
     "/about",

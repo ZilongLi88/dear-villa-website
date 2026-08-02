@@ -7,190 +7,82 @@ import { useTranslation } from "react-i18next";
 import { aboutImages, type AboutImage } from "../content/about";
 import { Footer } from "./Homepage";
 
-type AboutPathwayProps = {
+type OccasionCardProps = {
   image: AboutImage;
-  eyebrowKey: string;
-  titleKey: string;
-  bodyKey: string;
-  ctaKey: string;
+  contentKey: "accommodation" | "events" | "tea" | "privateDining";
   href: string;
+  portrait?: boolean;
 };
 
-function AboutPathway({
-  image,
-  eyebrowKey,
-  titleKey,
-  bodyKey,
-  ctaKey,
-  href,
-}: AboutPathwayProps) {
+function OccasionCard({ image, contentKey, href, portrait }: OccasionCardProps) {
   const { t } = useTranslation();
-
   return (
-    <article className="about-pathway">
-      <Link href={href} className="about-pathway-image" tabIndex={-1}>
-        <img
-          src={image.src}
-          alt={t(image.altKey)}
-          style={{ objectPosition: image.position }}
-          loading="lazy"
-        />
+    <article className={`occasion-card ${portrait ? "occasion-card-portrait" : ""}`}>
+      <Link href={href} className="occasion-card-link" aria-label={t(`aboutPage.occasions.${contentKey}.link`)}>
+        <figure><img src={image.src} alt={t(image.altKey)} loading="lazy" /></figure>
+        <div className="occasion-card-copy">
+          <h3>{t(`aboutPage.occasions.${contentKey}.title`)}</h3>
+          <p>{t(`aboutPage.occasions.${contentKey}.body`)}</p>
+          <span className="text-link"><span>{t(`aboutPage.occasions.${contentKey}.link`)}</span><span aria-hidden="true">→</span></span>
+        </div>
       </Link>
-      <div className="about-pathway-copy">
-        <p className="section-eyebrow">{t(eyebrowKey)}</p>
-        <h3>{t(titleKey)}</h3>
-        <p>{t(bodyKey)}</p>
-        <Link href={href} className="text-link">
-          <span>{t(ctaKey)}</span>
-          <span aria-hidden="true">↗</span>
-        </Link>
-      </div>
     </article>
   );
 }
 
-function AboutHero() {
+function EditorialSection({ image, titleKey, bodyKeys, reverse, id }: { image: AboutImage; titleKey: string; bodyKeys: string[]; reverse?: boolean; id?: string }) {
   const { t } = useTranslation();
-
   return (
-    <section className="about-hero" aria-labelledby="about-title">
-      <img
-        src={aboutImages.hero.src}
-        alt={t(aboutImages.hero.altKey)}
-        style={{ objectPosition: aboutImages.hero.position }}
-        fetchPriority="high"
-      />
-      <div className="about-hero-overlay" />
-      <div className="about-hero-content">
-        <p className="section-eyebrow">{t("about.hero.eyebrow")}</p>
-        <h1 id="about-title">{t("about.hero.title")}</h1>
-        <p>{t("about.hero.intro")}</p>
-      </div>
-    </section>
-  );
-}
-
-function AboutIntroduction() {
-  const { t } = useTranslation();
-
-  return (
-    <section className="about-introduction">
-      <div className="about-introduction-heading">
-        <p className="section-eyebrow">{t("about.introduction.eyebrow")}</p>
-        <h2>{t("about.introduction.title")}</h2>
-      </div>
-      <div className="about-introduction-copy">
-        <p className="about-lead">{t("about.introduction.lead")}</p>
-        <p>{t("about.introduction.body")}</p>
-      </div>
-      <figure className="about-introduction-image">
-        <img
-          src={aboutImages.introduction.src}
-          alt={t(aboutImages.introduction.altKey)}
-          style={{ objectPosition: aboutImages.introduction.position }}
-          loading="lazy"
-        />
-      </figure>
-    </section>
-  );
-}
-
-function AboutValues() {
-  const { t } = useTranslation();
-  const values = ["place", "hospitality", "pace"] as const;
-
-  return (
-    <section className="about-values" aria-labelledby="about-values-title">
-      <div className="about-values-heading">
-        <p className="section-eyebrow">{t("about.values.eyebrow")}</p>
-        <h2 id="about-values-title">{t("about.values.title")}</h2>
-      </div>
-      <div className="about-values-list">
-        {values.map((value, index) => (
-          <article key={value} className="about-value">
-            <span aria-hidden="true">0{index + 1}</span>
-            <h3>{t(`about.values.${value}.title`)}</h3>
-            <p>{t(`about.values.${value}.body`)}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function AboutSetting() {
-  const { t } = useTranslation();
-
-  return (
-    <section className="about-setting">
-      <img
-        src={aboutImages.setting.src}
-        alt={t(aboutImages.setting.altKey)}
-        style={{ objectPosition: aboutImages.setting.position }}
-        loading="lazy"
-      />
-      <div className="about-setting-overlay" />
-      <blockquote>
-        <p>{t("about.setting.quote")}</p>
-        <cite>{t("about.setting.attribution")}</cite>
-      </blockquote>
-    </section>
-  );
-}
-
-function AboutContactCta() {
-  const { t } = useTranslation();
-
-  return (
-    <section className="contact-cta">
-      <p className="section-eyebrow">{t("about.contact.eyebrow")}</p>
-      <h2>{t("about.contact.title")}</h2>
-      <p>{t("about.contact.body")}</p>
-      <Link href="/contact" className="button button-ivory">
-        {t("about.contact.cta")}
-      </Link>
+    <section className={`about-editorial ${reverse ? "about-editorial-reverse" : ""}`} id={id}>
+      <div className="about-editorial-copy"><h2>{t(titleKey)}</h2>{bodyKeys.map((key) => <p key={key}>{t(key)}</p>)}</div>
+      <figure><img src={image.src} alt={t(image.altKey)} loading="lazy" /></figure>
     </section>
   );
 }
 
 export function AboutPage() {
   const { t } = useTranslation();
+  const facts = ["residence", "grounds", "location", "distance"] as const;
+  return <>
+    <main className="about-page about-page-complete" id="main-content">
+      <section className="about-hero" aria-labelledby="about-title">
+        <img src={aboutImages.hero.src} alt={t(aboutImages.hero.altKey)} style={{ objectPosition: aboutImages.hero.position }} fetchPriority="high" />
+        <div className="about-hero-overlay" />
+        <div className="about-hero-content">
+          <p className="section-eyebrow">{t("aboutPage.hero.eyebrow")}</p>
+          <h1 id="about-title">{t("aboutPage.hero.title")}</h1>
+          <p>{t("aboutPage.hero.body")}</p>
+          <a href="#welcome" className="button button-ivory">{t("aboutPage.hero.cta")}</a>
+        </div>
+      </section>
 
-  return (
-    <>
-      <main className="about-page" id="main-content">
-        <AboutHero />
-        <AboutIntroduction />
-        <AboutValues />
-        <section className="about-pathways" aria-labelledby="about-pathways-title">
-          <header className="about-pathways-heading">
-            <p className="section-eyebrow">{t("about.pathways.eyebrow")}</p>
-            <h2 id="about-pathways-title">{t("about.pathways.title")}</h2>
-            <p>{t("about.pathways.intro")}</p>
-          </header>
-          <div className="about-pathways-grid">
-            <AboutPathway
-              image={aboutImages.history}
-              eyebrowKey="about.pathways.history.eyebrow"
-              titleKey="about.pathways.history.title"
-              bodyKey="about.pathways.history.body"
-              ctaKey="about.pathways.history.cta"
-              href="/about/history"
-            />
-            <AboutPathway
-              image={aboutImages.gallery}
-              eyebrowKey="about.pathways.gallery.eyebrow"
-              titleKey="about.pathways.gallery.title"
-              bodyKey="about.pathways.gallery.body"
-              ctaKey="about.pathways.gallery.cta"
-              href="/about/gallery"
-            />
-          </div>
-        </section>
-        <AboutSetting />
-        <AboutContactCta />
-      </main>
-      <Footer />
-    </>
-  );
+      <EditorialSection id="welcome" image={aboutImages.welcome} titleKey="aboutPage.welcome.title" bodyKeys={["aboutPage.welcome.body1", "aboutPage.welcome.body2"]} />
+      <EditorialSection image={aboutImages.slowDown} titleKey="aboutPage.slowDown.title" bodyKeys={["aboutPage.slowDown.body1", "aboutPage.slowDown.body2", "aboutPage.slowDown.body3"]} reverse />
+
+      <section className="about-occasions" aria-labelledby="occasions-title">
+        <header><h2 id="occasions-title">{t("aboutPage.occasions.title")}</h2><p>{t("aboutPage.occasions.intro")}</p></header>
+        <div className="occasion-grid">
+          <OccasionCard image={aboutImages.accommodation} contentKey="accommodation" href="/accommodation" />
+          <OccasionCard image={aboutImages.events} contentKey="events" href="/contact" />
+          <OccasionCard image={aboutImages.tea} contentKey="tea" href="/experiences/tea-room" portrait />
+          <OccasionCard image={aboutImages.privateDining} contentKey="privateDining" href="/experiences/private-dining" />
+        </div>
+      </section>
+
+      <section className="about-estate" aria-labelledby="estate-title">
+        <figure><img src={aboutImages.estate.src} alt={t(aboutImages.estate.altKey)} loading="lazy" /></figure>
+        <div className="about-estate-heading"><h2 id="estate-title">{t("aboutPage.estate.title")}</h2><p>{t("aboutPage.estate.intro")}</p></div>
+        <dl>{facts.map((fact) => <div key={fact}><dt>{t(`aboutPage.estate.facts.${fact}`)}</dt></div>)}</dl>
+      </section>
+
+      <EditorialSection image={aboutImages.vision} titleKey="aboutPage.vision.title" bodyKeys={["aboutPage.vision.body1", "aboutPage.vision.body2", "aboutPage.vision.body3"]} reverse />
+
+      <section className="about-final-cta">
+        <img src={aboutImages.closing.src} alt={t(aboutImages.closing.altKey)} style={{ objectPosition: aboutImages.closing.position }} loading="lazy" />
+        <div className="about-final-overlay" />
+        <div><h2>{t("aboutPage.final.title")}</h2><p>{t("aboutPage.final.body")}</p><div className="about-final-actions"><Link href="/accommodation" className="button button-ivory">{t("aboutPage.final.primary")}</Link><Link href="/contact" className="button button-secondary-light">{t("aboutPage.final.secondary")}</Link></div></div>
+      </section>
+    </main>
+    <Footer />
+  </>;
 }

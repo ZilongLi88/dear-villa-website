@@ -229,6 +229,22 @@ export const en = {
           "Sailing boats resting on the calm harbour below the Dear Villa estate",
       },
     },
+    aboutPage: {
+      hero: { eyebrow: "ABOUT DEAR VILLA", title: "A Private Estate in the Heart of Whitford", body: "Just a short drive from Auckland, Dear Villa offers an elegant countryside retreat where nature, hospitality, and meaningful experiences come together.", cta: "Explore the Estate" },
+      welcome: { title: "Welcome to Dear Villa", body1: "Nestled in the peaceful countryside of Whitford, Dear Villa is a boutique lifestyle estate designed for guests seeking space, privacy, and authentic experiences.", body2: "Surrounded by expansive lawns and mature gardens, the estate provides a welcoming setting for weekend escapes, family gatherings, private celebrations, corporate retreats, and cultural experiences." },
+      slowDown: { title: "A Place to Slow Down", body1: "Every corner of Dear Villa encourages guests to slow down and reconnect.", body2: "Enjoy a quiet morning tea, relax beside the pool, stroll through open gardens, or simply appreciate the calm of the surrounding landscape.", body3: "Whether you stay for a night or spend an afternoon with friends, the estate is designed to create memorable moments." },
+      occasions: {
+        title: "Designed for Every Occasion", intro: "Whether you are planning a peaceful stay, celebrating a special occasion, or simply looking to reconnect with nature, Dear Villa offers thoughtfully curated experiences for every guest.",
+        accommodation: { title: "Accommodation", body: "Comfortable countryside accommodation for couples, families, and groups seeking a peaceful retreat.", link: "Discover Accommodation" },
+        events: { title: "Private Events", body: "A welcoming estate setting for private celebrations, meaningful gatherings, and thoughtfully hosted occasions.", link: "Explore Events" },
+        tea: { title: "Tea Experience", body: "A thoughtfully curated tea space where guests can slow down, share conversation, and experience tea culture.", link: "Discover Tea" },
+        privateDining: { title: "Private Dining", body: "Enjoy beautifully prepared private dining experiences in an elegant estate setting, where carefully arranged tables, warm hospitality, and relaxed conversation come together to create memorable moments.", link: "Explore Private Dining" },
+      },
+      estate: { title: "The Estate", intro: "Designed for comfort, connection, and memorable gatherings.", facts: { residence: "457 m² Residence", grounds: "1.8 Hectares of Private Grounds", location: "Located in Whitford", distance: "Approximately 30 Minutes from Auckland CBD" } },
+      vision: { title: "Our Vision", body1: "Dear Villa is more than a destination.", body2: "It is a place where people celebrate milestones, reconnect with family, experience tea culture, and enjoy the quiet beauty of the New Zealand countryside.", body3: "We look forward to welcoming every guest with genuine hospitality and thoughtful experiences." },
+      final: { title: "We Look Forward to Welcoming You", body: "Whether you are planning a relaxing getaway, a memorable celebration, or simply a peaceful afternoon, Dear Villa is ready to welcome you.", primary: "View Accommodation", secondary: "Contact Us" },
+      images: { hero: "Aerial view of the Dear Villa residence, swimming pool, and surrounding lawns", welcome: "Dear Villa living room with comfortable seating, warm timber floors, and garden light", slowDown: "Carefully arranged tea table with teaware and garden views at Dear Villa", accommodation: "Dear Villa bedroom opening onto a peaceful garden view", events: "Spacious Dear Villa kitchen with a wide island and garden outlook", tea: "Hanging kettle suspended above the tea setting at Dear Villa", privateDining: "Elegant place settings arranged around a private dining table at Dear Villa", estate: "Dear Villa swimming pool surrounded by the residence, terrace, and garden", vision: "Record player and vinyl records arranged in a warm Dear Villa interior", closing: "Sailboats resting on the calm harbour below Dear Villa" },
+    },
     accommodation: {
       hero: { title: "Stay at Dear Villa", body: "Wake up to peaceful gardens, elegant interiors, and the quiet charm of Whitford.", cta: "Book Your Stay" },
       comfort: {
