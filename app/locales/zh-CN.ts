@@ -254,5 +254,36 @@ export const zhCN = {
         cta: "望向庄园景观的 Dear Villa 室外泳池",
       },
     },
+    teaRoom: {
+      hero: { title: "一处让时间慢下来的空间" },
+      introduction: {
+        title: "茶室",
+        body: "这里不仅是品茶的地方，更是交流、静思与相聚的空间。",
+      },
+      moments: {
+        label: "茶时光",
+        moment1: "一期一会",
+        moment2: "茶不仅是一杯饮品，更是一场让时间慢下来的仪式。",
+        moment3: "每一杯茶，都讲述着土地、水、火与时间的故事。",
+        moment4: "在匆忙的世界里，茶提醒我们：\n\n最好的时光，不必着急。",
+        moment5: "一杯茶，一刻宁静。",
+      },
+      closing: {
+        title: "愿您离开时，比来时更从容",
+        body1: "愿每一位来到这里的人，都能带着一份宁静、一份温暖，以及值得再次回味的记忆离开。",
+        body2: "愿这段茶香与时光，成为您生活中值得再次回来的理由。",
+        cta: "预约茶室体验",
+      },
+      images: {
+        hero: "Dear Villa 静谧茶室中悬于茶桌上方的煮水壶",
+        introduction: "望向宁静花园景观的 Dear Villa 茶室",
+        moment1: "Dear Villa 茶席上茶艺师为来宾斟茶",
+        moment2: "为相聚交谈而细心准备的茶席",
+        moment3: "茶汤在茶仪式中缓缓注入杯中",
+        moment4: "来宾在 Dear Villa 共享宁静茶会",
+        moment5: "花园环绕中的 Dear Villa 茶室与茶桌",
+        closing: "茶室桌上雅致排列的茶器与自然细节",
+      },
+    },
   },
 } as const;

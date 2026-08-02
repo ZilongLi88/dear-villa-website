@@ -270,5 +270,36 @@ export const en = {
         cta: "Dear Villa swimming pool looking across the landscaped estate",
       },
     },
+    teaRoom: {
+      hero: { title: "A Place to Slow Down" },
+      introduction: {
+        title: "The Tea Room",
+        body: "The Tea Room was created as a quiet place for conversation, reflection and shared moments.",
+      },
+      moments: {
+        label: "Tea Moments",
+        moment1: "Every tea gathering is a once-in-a-lifetime encounter.",
+        moment2: "Tea is more than a drink—it is a quiet ritual that slows time, invites conversation, and reconnects us with nature.",
+        moment3: "Every cup tells the story of earth, water, fire, and time.",
+        moment4: "In a fast-moving world, tea reminds us that the finest moments cannot be rushed.",
+        moment5: "One Cup of Tea.\nOne Quiet Moment.",
+      },
+      closing: {
+        title: "Leave a Little Slower Than You Arrived",
+        body1: "We hope every guest leaves with a quieter mind, a lighter heart, and memories worth returning to.",
+        body2: "May every visit become an invitation to pause, reconnect, and carry a little more calm into everyday life.",
+        cta: "Experience the Tea Room",
+      },
+      images: {
+        hero: "Hanging kettle above a tea table in the quiet Dear Villa Tea Room",
+        introduction: "The Dear Villa Tea Room opening onto a peaceful garden view",
+        moment1: "Tea host pouring tea during an intimate gathering at Dear Villa",
+        moment2: "A considered tea table setting prepared for shared conversation",
+        moment3: "Tea flowing gently into a cup during the tea ritual",
+        moment4: "Guests sharing a quiet tea ceremony at Dear Villa",
+        moment5: "The Tea Room and its table framed by the surrounding garden",
+        closing: "Tea vessels and natural details arranged on the Tea Room table",
+      },
+    },
   },
 } as const;

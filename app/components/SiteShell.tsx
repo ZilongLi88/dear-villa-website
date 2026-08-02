@@ -12,6 +12,7 @@ import {
 import { AboutPage } from "./AboutPage";
 import { AccommodationPage } from "./AccommodationPage";
 import { Homepage } from "./Homepage";
+import { TeaRoomPage } from "./TeaRoomPage";
 
 const isActiveRoute = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -352,6 +353,8 @@ export function SiteShell() {
         <AboutPage />
       ) : pathname === "/accommodation" ? (
         <AccommodationPage />
+      ) : pathname === "/experiences/tea-room" ? (
+        <TeaRoomPage />
       ) : (
         <main className="structure-preview" id="main-content">
           <div className="structure-card">
