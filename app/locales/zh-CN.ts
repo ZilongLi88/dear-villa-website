@@ -232,6 +232,25 @@ export const zhCN = {
       final: { title: "期待与您相遇", body: "无论您计划一次悠闲度假、一场特别的庆典，还是一次轻松的下午时光，Dear Villa 都期待与您相见。", primary: "查看住宿", secondary: "联系我们" },
       images: { hero: "Dear Villa 主建筑、泳池与周边草坪的航拍景观", welcome: "Dear Villa 客厅内舒适座椅、温暖木地板与花园光线", slowDown: "Dear Villa 花园景观前精心布置的茶桌与茶器", accommodation: "通向宁静花园景观的 Dear Villa 客房", events: "拥有宽阔岛台与花园景观的 Dear Villa 厨房", tea: "悬于 Dear Villa 茶席上方的煮水壶", privateDining: "Dear Villa 私宴餐桌上精心布置的餐具与席位", estate: "主建筑、露台与花园环绕的 Dear Villa 泳池", vision: "Dear Villa 温暖室内陈设中的唱片机与黑胶唱片", closing: "Dear Villa 庄园下方平静海湾中停泊的帆船" },
     },
+    internationalProgramsPage: {
+      title: "国际合作项目",
+      subtitle: "敬请期待",
+      body1: "我们正在筹备一系列融合文化交流、教育研学、健康体验与国际合作的特色项目。",
+      body2: "从沉浸式文化体验、企业交流，到国际研学与定制接待，Dear Villa 期待迎接来自世界各地的宾客，在这里相聚、学习、交流，共同创造难忘的体验。",
+      body3: "更多精彩内容，即将与您见面。",
+      imageAlt: "国际宾客沿着阳光下的庄园花园步道走向主建筑",
+    },
+    contactPage: {
+      title: "联系我们",
+      imageAlt: "俯瞰庄园与花园景观的 Dear Villa 室外泳池",
+      introduction: { title: "期待与您相遇", body1: "无论您正在规划一次宁静的庄园住宿、茶室体验、私人用餐体验，还是希望进一步了解 Dear Villa，我们都很乐意为您提供帮助。", body2: "欢迎通过咨询表格告诉我们您的需求，我们将在收到信息后尽快与您联系。" },
+      details: { title: "联系信息", address: "地址" },
+      fields: { fullName: "姓名", email: "电子邮箱", phone: "联系电话", enquiryType: "咨询类型", preferredDate: "期望日期", guests: "来宾人数", message: "留言", selectPrompt: "请选择咨询类型" },
+      options: { accommodation: "庄园住宿", weddings: "婚礼", corporateEvents: "企业活动", internationalPrograms: "国际合作项目", general: "其他咨询" },
+      validation: { required: "此项为必填项。", email: "请输入有效的电子邮箱地址。" },
+      submit: { idle: "发送咨询", sending: "正在发送…", success: "提交成功" },
+      status: { success: "感谢您的咨询，我们已收到您的信息。", error: "暂时无法发送您的咨询，请重试。" },
+    },
     accommodation: {
       hero: { title: "庄园住宿体验", body: "在宁静花园中醒来，于优雅舒适的空间里放慢脚步。", cta: "预订住宿" },
       comfort: {

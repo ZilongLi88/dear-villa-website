@@ -12,6 +12,8 @@ import {
 import { AboutPage } from "./AboutPage";
 import { AccommodationPage } from "./AccommodationPage";
 import { Homepage } from "./Homepage";
+import { InternationalProgramsPage } from "./InternationalProgramsPage";
+import { ContactPage } from "./ContactPage";
 import { TeaRoomPage } from "./TeaRoomPage";
 
 const isActiveRoute = (pathname: string, href: string) =>
@@ -59,7 +61,7 @@ function DesktopNavigation({
 }) {
   const { t } = useTranslation();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const triggerRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   return (
     <nav
@@ -87,33 +89,26 @@ function DesktopNavigation({
               onMouseLeave={() => hasChildren && setOpenDropdown(null)}
             >
               <div className="desktop-link-row">
-                <Link
-                  ref={(element) => {
-                    triggerRefs.current[item.id] = element;
-                  }}
-                  href={item.href}
-                  className={`${active ? "is-active" : ""} ${item.cta ? "contact-link" : ""}`}
-                  aria-current={active ? "page" : undefined}
-                  onFocus={() => setOpenDropdown(hasChildren ? item.id : null)}
-                >
-                  {t(item.labelKey)}
-                </Link>
-                {hasChildren && (
+                {hasChildren ? (
                   <button
+                    ref={(element) => { triggerRefs.current[item.id] = element; }}
                     type="button"
-                    className="dropdown-toggle"
-                    aria-label={t("navigation.expandSection", {
-                      section: t(item.labelKey),
-                    })}
+                    className={`menu-trigger ${active ? "is-active" : ""}`}
                     aria-expanded={isOpen}
+                    aria-controls={`${item.id}-desktop-menu`}
                     onClick={() => setOpenDropdown(isOpen ? null : item.id)}
+                    onFocus={() => setOpenDropdown(item.id)}
                   >
-                    <span aria-hidden="true">⌄</span>
+                    <span>{t(item.labelKey)}</span><span aria-hidden="true">⌄</span>
                   </button>
+                ) : (
+                  <Link href={item.href} className={`${active ? "is-active" : ""} ${item.cta ? "contact-link" : ""}`} aria-current={active ? "page" : undefined}>
+                    {t(item.labelKey)}
+                  </Link>
                 )}
               </div>
               {hasChildren && (
-                <ul className="dropdown-menu" hidden={!isOpen}>
+                <ul id={`${item.id}-desktop-menu`} className="dropdown-menu" hidden={!isOpen}>
                   {item.children?.map((child) => {
                     const childActive = isActiveRoute(pathname, child.href);
                     return (
@@ -168,6 +163,7 @@ function MobileNavigation({
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
+        setExpandedGroups([]);
         onClose();
         return;
       }
@@ -199,6 +195,11 @@ function MobileNavigation({
     );
   };
 
+  const resetAndClose = () => {
+    setExpandedGroups([]);
+    onClose();
+  };
+
   return (
     <div className="mobile-panel" hidden={!isOpen} ref={panelRef}>
       <div className="mobile-panel-header">
@@ -207,7 +208,7 @@ function MobileNavigation({
           type="button"
           className="mobile-close"
           aria-label={t("navigation.closeMenu")}
-          onClick={onClose}
+          onClick={resetAndClose}
         >
           <span aria-hidden="true">×</span>
         </button>
@@ -221,29 +222,24 @@ function MobileNavigation({
             return (
               <li key={item.id}>
                 <div className="mobile-link-row">
-                  <Link
-                    href={item.href}
-                    className={`${active ? "is-active" : ""} ${item.cta ? "contact-link" : ""}`}
-                    aria-current={active ? "page" : undefined}
-                    onClick={onClose}
-                  >
-                    {t(item.labelKey)}
-                  </Link>
-                  {hasChildren && (
+                  {hasChildren ? (
                     <button
                       type="button"
-                      aria-label={t("navigation.expandSection", {
-                        section: t(item.labelKey),
-                      })}
+                      className={`mobile-menu-trigger ${active ? "is-active" : ""}`}
                       aria-expanded={expanded}
+                      aria-controls={`${item.id}-mobile-menu`}
                       onClick={() => toggleGroup(item.id)}
                     >
-                      <span aria-hidden="true">{expanded ? "−" : "+"}</span>
+                      <span>{t(item.labelKey)}</span><span aria-hidden="true">{expanded ? "−" : "+"}</span>
                     </button>
+                  ) : (
+                    <Link href={item.href} className={`${active ? "is-active" : ""} ${item.cta ? "contact-link" : ""}`} aria-current={active ? "page" : undefined} onClick={resetAndClose}>
+                      {t(item.labelKey)}
+                    </Link>
                   )}
                 </div>
                 {hasChildren && (
-                  <ul className="mobile-submenu" hidden={!expanded}>
+                  <ul id={`${item.id}-mobile-menu`} className="mobile-submenu" hidden={!expanded}>
                     {item.children?.map((child) => {
                       const childActive = isActiveRoute(pathname, child.href);
                       return (
@@ -252,7 +248,7 @@ function MobileNavigation({
                             href={child.href}
                             className={childActive ? "is-active" : undefined}
                             aria-current={childActive ? "page" : undefined}
-                            onClick={onClose}
+                            onClick={resetAndClose}
                           >
                             {t(child.labelKey)}
                           </Link>
@@ -355,6 +351,10 @@ export function SiteShell() {
         <AccommodationPage />
       ) : pathname === "/experiences/tea-room" ? (
         <TeaRoomPage />
+      ) : pathname === "/international-programs" ? (
+        <InternationalProgramsPage />
+      ) : pathname === "/contact" ? (
+        <ContactPage />
       ) : (
         <main className="structure-preview" id="main-content">
           <div className="structure-card">

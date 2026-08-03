@@ -67,6 +67,23 @@ test("provides matching English and Simplified Chinese About translations", asyn
   assert.equal(instance.t("aboutPage.final.secondary"), "联系我们");
 });
 
+test("renders the localized accessible Contact enquiry form", async () => {
+  const response = await render("/contact");
+  const html = await response.text();
+  const component = await readFile(new URL("../app/components/ContactPage.tsx", import.meta.url), "utf8");
+
+  assert.doesNotMatch(html, /contactPage\.[a-zA-Z0-9_.]+/);
+  assert.match(html, /Contact Us/);
+  for (const name of ["fullName", "email", "phone", "enquiryType", "preferredDate", "guests", "message"]) {
+    assert.match(html, new RegExp(`name="${name}"`));
+  }
+  assert.match(component, /aria-invalid/);
+  assert.match(component, /status === "sending" \|\| status === "success"/);
+  assert.match(component, /\^\[\^\\s@\]\+@/);
+  assert.doesNotMatch(component, /if \(!message\)/);
+  assert.match(component, /<textarea id="message" name="message" rows=\{6\} \/>/);
+});
+
 test("serves every Phase 1 route directly", async () => {
   const routes = [
     "/about",

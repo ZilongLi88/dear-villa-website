@@ -245,6 +245,25 @@ export const en = {
       final: { title: "We Look Forward to Welcoming You", body: "Whether you are planning a relaxing getaway, a memorable celebration, or simply a peaceful afternoon, Dear Villa is ready to welcome you.", primary: "View Accommodation", secondary: "Contact Us" },
       images: { hero: "Aerial view of the Dear Villa residence, swimming pool, and surrounding lawns", welcome: "Dear Villa living room with comfortable seating, warm timber floors, and garden light", slowDown: "Carefully arranged tea table with teaware and garden views at Dear Villa", accommodation: "Dear Villa bedroom opening onto a peaceful garden view", events: "Spacious Dear Villa kitchen with a wide island and garden outlook", tea: "Hanging kettle suspended above the tea setting at Dear Villa", privateDining: "Elegant place settings arranged around a private dining table at Dear Villa", estate: "Dear Villa swimming pool surrounded by the residence, terrace, and garden", vision: "Record player and vinyl records arranged in a warm Dear Villa interior", closing: "Sailboats resting on the calm harbour below Dear Villa" },
     },
+    internationalProgramsPage: {
+      title: "International Programs",
+      subtitle: "Coming Soon",
+      body1: "We are preparing a collection of international programs that bring together culture, education, wellness, and meaningful exchange.",
+      body2: "From immersive cultural experiences and executive retreats to educational visits and bespoke hospitality, Dear Villa looks forward to welcoming guests from around the world.",
+      body3: "Stay tuned as we continue to create opportunities for connection, learning, and unforgettable experiences.",
+      imageAlt: "International guests walking through a sunlit estate garden toward the residence",
+    },
+    contactPage: {
+      title: "Contact Us",
+      imageAlt: "Dear Villa swimming pool overlooking the surrounding estate and gardens",
+      introduction: { title: "We'd Love to Hear from You", body1: "Whether you are planning a peaceful stay, a tea experience, a private dining experience, or simply wish to learn more about Dear Villa, we would be delighted to assist you.", body2: "Share a few details with us using the enquiry form, and our team will get back to you as soon as possible." },
+      details: { title: "Contact Information", address: "Address" },
+      fields: { fullName: "Full Name", email: "Email", phone: "Phone", enquiryType: "Enquiry Type", preferredDate: "Preferred Date", guests: "Number of Guests", message: "Message", selectPrompt: "Select an enquiry type" },
+      options: { accommodation: "Accommodation", weddings: "Weddings", corporateEvents: "Corporate Events", internationalPrograms: "International Programs", general: "General Enquiry" },
+      validation: { required: "This field is required.", email: "Enter a valid email address." },
+      submit: { idle: "Send Enquiry", sending: "Sending...", success: "Enquiry Sent" },
+      status: { success: "Thank you. Your enquiry has been received.", error: "We could not send your enquiry. Please try again." },
+    },
     accommodation: {
       hero: { title: "Stay at Dear Villa", body: "Wake up to peaceful gardens, elegant interiors, and the quiet charm of Whitford.", cta: "Book Your Stay" },
       comfort: {
