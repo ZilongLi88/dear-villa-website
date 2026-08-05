@@ -34,13 +34,34 @@ export function ContactPage() {
     if (Object.keys(nextErrors).length) return;
 
     setStatus("sending");
-    try {
-      await new Promise((resolve) => window.setTimeout(resolve, 650));
-      setStatus("success");
-      form.reset();
-    } catch {
-      setStatus("error");
-    }
+
+try {
+  const response = await fetch("/api/enquiries", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      fullName,
+      email,
+      phone: String(data.get("phone") ?? "").trim(),
+      enquiryType,
+      preferredDate: String(data.get("preferredDate") ?? ""),
+      guests: String(data.get("guests") ?? ""),
+      message: String(data.get("message") ?? "").trim(),
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to submit enquiry");
+  }
+
+  setStatus("success");
+  form.reset();
+} catch (error) {
+  console.error("Enquiry submission failed:", error);
+  setStatus("error");
+}
   };
 
   const field = (name: FieldName) => ({
