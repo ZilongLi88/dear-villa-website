@@ -15,3 +15,12 @@ declare module "*.jpeg" {
   };
   export default source;
 }
+
+declare module "*.png" {
+  const source: {
+    src: string;
+    width: number;
+    height: number;
+  };
+  export default source;
+}

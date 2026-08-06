@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dear-villa-website",
+  "account_id": "72c82904391421f4ce3523c24f9a4d29",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS"
+  },
+  "images": {
+    "binding": "IMAGES"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "dear-villa-db",
+      "database_id": "7f687d33-a93a-4395-963c-6099a52f74ea",
+      "migrations_dir": "drizzle",
+      "remote": true
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
