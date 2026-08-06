@@ -281,15 +281,25 @@ function GalleryPreview() {
 
 function ContactCta() {
   const { t } = useTranslation();
+  const image = homepageImages.contactCta;
 
   return (
     <section className="contact-cta">
-      <p className="section-eyebrow">{t("homepage.contact.eyebrow")}</p>
-      <h2>{t("homepage.contact.title")}</h2>
-      <p>{t("homepage.contact.body")}</p>
-      <Link href="/contact" className="button button-ivory">
-        {t("homepage.contact.cta")}
-      </Link>
+      <img
+        src={image.src}
+        alt={t(image.altKey)}
+        style={{ objectPosition: image.position }}
+        loading="lazy"
+      />
+      <div className="contact-cta-overlay" />
+      <div className="contact-cta-content">
+        <p className="section-eyebrow">{t("homepage.contact.eyebrow")}</p>
+        <h2>{t("homepage.contact.title")}</h2>
+        <p>{t("homepage.contact.body")}</p>
+        <Link href="/contact" className="button button-ivory">
+          {t("homepage.contact.cta")}
+        </Link>
+      </div>
     </section>
   );
 }

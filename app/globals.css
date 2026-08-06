@@ -1015,10 +1015,37 @@ a {
 }
 
 .contact-cta {
+  position: relative;
+  display: grid;
+  min-height: clamp(560px, 65vw, 780px);
   padding: clamp(100px, 12vw, 180px) 5vw;
   background: var(--forest);
   color: white;
+  isolation: isolate;
+  place-items: center;
   text-align: center;
+}
+
+.contact-cta > img {
+  position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+}
+
+.contact-cta-overlay {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(0deg, rgba(7, 28, 22, 0.48), rgba(7, 28, 22, 0.2) 62%),
+    linear-gradient(90deg, rgba(7, 28, 22, 0.18), rgba(7, 28, 22, 0.08));
+}
+
+.contact-cta-content {
+  width: min(760px, 100%);
 }
 
 .contact-cta .section-eyebrow {
@@ -1031,10 +1058,10 @@ a {
   color: white;
 }
 
-.contact-cta > p:not(.section-eyebrow) {
+.contact-cta-content > p:not(.section-eyebrow) {
   max-width: 620px;
   margin-inline: auto;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.86);
 }
 
 .button-ivory {
@@ -1748,6 +1775,10 @@ a {
 
   .contact-cta {
     padding-inline: 7vw;
+  }
+
+  .contact-cta > img {
+    object-position: 58% center !important;
   }
 
   .site-footer {

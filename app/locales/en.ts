@@ -140,9 +140,11 @@ export const en = {
         experiences:
           "Estate pool overlooking lawns, gardens, and the harbour",
         teaRoom:
-          "Green glass vase with seasonal branches in a quiet estate interior",
+          "Hanging kettle above a tea table set for a quiet tea gathering",
         privateDining:
-          "Bright Dear Villa kitchen island opening toward the garden terrace",
+          "Elegantly arranged private dining table with layered place settings",
+        contactCta:
+          "Aerial view of the Dear Villa residence, lawns, and surrounding countryside",
         galleryAerial: "Aerial view directly above the Dear Villa residence and pool",
         galleryHarbour: "Sailing boats resting in the harbour below the estate",
         galleryStaircase: "Dear Villa living room seating and coffee table",

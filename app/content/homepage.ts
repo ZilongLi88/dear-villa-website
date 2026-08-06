@@ -4,8 +4,9 @@ import events from "../../assets/images/exterior/aerial-pool-view-01.avif";
 import internationalPrograms from "../../assets/images/exterior/garden-harbour-view-01.avif";
 import accommodation from "../../assets/images/interiors/living-room-wide-01.avif";
 import experiences from "../../assets/images/exterior/swimming-pool-view-01.avif";
-import teaRoom from "../../assets/images/interiors/persimmon-branch-vase-01.avif";
-import privateDining from "../../assets/images/dining/kitchen-island-01.avif";
+import teaRoom from "../../assets/images/tea-room/hanging-kettle-01.avif";
+import privateDining from "../../assets/images/dining/place-settings.avif";
+import contactCta from "../../assets/images/exterior/aerial-estate-view-01.avif";
 import galleryAerial from "../../assets/images/exterior/aerial-estate-overhead-01.avif";
 import galleryHarbour from "../../assets/images/exterior/harbour-sailboats-01.avif";
 import galleryStaircase from "../../assets/images/interiors/living-room-coffee-table-01.avif";
@@ -53,6 +54,11 @@ export const homepageImages = {
     src: privateDining.src,
     altKey: "homepage.images.privateDining",
     position: "70% center",
+  },
+  contactCta: {
+    src: contactCta.src,
+    altKey: "homepage.images.contactCta",
+    position: "center 48%",
   },
   gallery: [
     {
