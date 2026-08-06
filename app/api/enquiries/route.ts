@@ -1,67 +1,42 @@
 import { getDb } from "../../../db";
 import { enquiries } from "../../../db/schema";
+import { createEnquiryPostHandler, verifyTurnstile } from "./handler";
 
-type EnquiryPayload = {
-  fullName?: unknown;
-  email?: unknown;
-  phone?: unknown;
-  enquiryType?: unknown;
-  preferredDate?: unknown;
-  guests?: unknown;
-  message?: unknown;
-};
-
-function optionalString(value: unknown) {
-  if (typeof value !== "string") return null;
-  const trimmed = value.trim();
-  return trimmed || null;
-}
+const TURNSTILE_LOCAL_TEST_SECRET = "1x0000000000000000000000000000000AA";
+const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as EnquiryPayload;
-    const fullName = optionalString(body.fullName);
-    const email = optionalString(body.email);
-    const enquiryType = optionalString(body.enquiryType);
-
-    if (!fullName || !email || !enquiryType) {
+    const { env } = await import("cloudflare:workers");
+    const secret = env.TURNSTILE_SECRET_KEY;
+    const isLocalRequest = LOCAL_HOSTNAMES.has(new URL(request.url).hostname);
+    if (!secret || (secret === TURNSTILE_LOCAL_TEST_SECRET && !isLocalRequest)) {
+      console.error("Turnstile secret is unavailable");
       return Response.json(
-        { success: false, message: "Missing required enquiry fields" },
-        { status: 400 },
+        { success: false, code: "service_unavailable", message: "Enquiry service is unavailable" },
+        { status: 503 },
       );
     }
 
-    const guestsValue = optionalString(body.guests);
-    const guests = guestsValue === null ? null : Number.parseInt(guestsValue, 10);
-
-    if (guests !== null && (!Number.isSafeInteger(guests) || guests < 1)) {
-      return Response.json(
-        { success: false, message: "Invalid number of guests" },
-        { status: 400 },
-      );
-    }
-
-    const db = await getDb();
-    const [enquiry] = await db
-      .insert(enquiries)
-      .values({
-        fullName,
-        email,
-        phone: optionalString(body.phone),
-        enquiryType,
-        preferredDate: optionalString(body.preferredDate),
-        guests,
-        message: optionalString(body.message),
-      })
-      .returning();
-
-    return Response.json({
-      success: true,
-      message: "Received",
-      data: enquiry,
+    const handler = createEnquiryPostHandler({
+      checkRateLimit: async (key) => {
+        const outcome = await env.CONTACT_RATE_LIMITER.limit({ key });
+        return outcome.success;
+      },
+      verifyTurnstile: (token) =>
+        verifyTurnstile(token, {
+          secret,
+          expectedHostname: env.TURNSTILE_EXPECTED_HOSTNAME,
+        }),
+      insertEnquiry: async (values) => {
+        const db = await getDb();
+        await db.insert(enquiries).values(values);
+      },
     });
-  } catch (error) {
-    console.error("Failed to save enquiry", error);
+
+    return await handler(request);
+  } catch {
+    console.error("Enquiry submission failed");
     return Response.json(
       { success: false, message: "Unable to save enquiry" },
       { status: 500 },

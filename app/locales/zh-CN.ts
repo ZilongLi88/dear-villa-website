@@ -249,8 +249,9 @@ export const zhCN = {
       fields: { fullName: "姓名", email: "电子邮箱", phone: "联系电话", enquiryType: "咨询类型", preferredDate: "期望日期", guests: "来宾人数", message: "留言", selectPrompt: "请选择咨询类型" },
       options: { accommodation: "庄园住宿", weddings: "婚礼", corporateEvents: "企业活动", internationalPrograms: "国际合作项目", general: "其他咨询" },
       validation: { required: "此项为必填项。", email: "请输入有效的电子邮箱地址。" },
+      turnstile: { label: "安全验证", unavailable: "安全验证暂时不可用，请稍后重试。" },
       submit: { idle: "发送咨询", sending: "正在发送…", success: "提交成功" },
-      status: { success: "感谢您的咨询，我们已收到您的信息。", error: "暂时无法发送您的咨询，请重试。" },
+      status: { success: "感谢您的咨询，我们已收到您的信息。", error: "暂时无法发送您的咨询，请重试。", rateLimited: "提交次数过多，请等待一分钟后重试。", verification: "请完成安全验证后重试。" },
     },
     accommodation: {
       hero: { title: "庄园住宿体验", body: "在宁静花园中醒来，于优雅舒适的空间里放慢脚步。", cta: "预订住宿" },

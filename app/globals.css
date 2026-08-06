@@ -2008,6 +2008,9 @@ a {
 .form-field input:focus,.form-field select:focus,.form-field textarea:focus { border-color:var(--color-forest-700); box-shadow:0 1px 0 var(--color-forest-700); }
 .form-field input[aria-invalid=true],.form-field select[aria-invalid=true],.form-field textarea[aria-invalid=true] { border-color:#9b4439; }
 .field-error { margin:8px 0 0; color:#8b3d34; font-size:.76rem; line-height:1.4; }
+.turnstile-field { min-height:92px; }
+.turnstile-label { margin:0 0 12px; color:var(--color-forest-900); font-size:.9rem; font-weight:600; letter-spacing:.04em; }
+.turnstile-widget { min-height:65px; }
 .form-submit { display:flex; min-height:54px; margin-top:12px; align-items:center; gap:24px; }
 .form-submit .button { margin:0; border:0; cursor:pointer; }
 .form-submit .button:disabled { cursor:not-allowed; opacity:.64; }

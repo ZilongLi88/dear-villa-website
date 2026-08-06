@@ -263,8 +263,9 @@ export const en = {
       fields: { fullName: "Full Name", email: "Email", phone: "Phone", enquiryType: "Enquiry Type", preferredDate: "Preferred Date", guests: "Number of Guests", message: "Message", selectPrompt: "Select an enquiry type" },
       options: { accommodation: "Accommodation", weddings: "Weddings", corporateEvents: "Corporate Events", internationalPrograms: "International Programs", general: "General Enquiry" },
       validation: { required: "This field is required.", email: "Enter a valid email address." },
+      turnstile: { label: "Security verification", unavailable: "Security verification is unavailable. Please try again later." },
       submit: { idle: "Send Enquiry", sending: "Sending...", success: "Enquiry Sent" },
-      status: { success: "Thank you. Your enquiry has been received.", error: "We could not send your enquiry. Please try again." },
+      status: { success: "Thank you. Your enquiry has been received.", error: "We could not send your enquiry. Please try again.", rateLimited: "Too many attempts. Please wait a minute and try again.", verification: "Please complete the security verification and try again." },
     },
     accommodation: {
       hero: { title: "Stay at Dear Villa", body: "Wake up to peaceful gardens, elegant interiors, and the quiet charm of Whitford.", cta: "Book Your Stay" },

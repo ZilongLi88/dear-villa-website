@@ -81,7 +81,11 @@ test("renders the localized accessible Contact enquiry form", async () => {
   assert.match(component, /status === "sending" \|\| status === "success"/);
   assert.match(component, /\^\[\^\\s@\]\+@/);
   assert.doesNotMatch(component, /if \(!message\)/);
-  assert.match(component, /<textarea id="message" name="message" rows=\{6\} \/>/);
+  assert.match(component, /<textarea id="message" name="message" rows=\{6\} maxLength=\{4000\} \/>/);
+  assert.match(component, /turnstileToken/);
+  assert.match(component, /<TurnstileWidget/);
+  assert.match(component, /setStatus\("success"\);\s*setTurnstileToken\(null\);\s*setTurnstileResetSignal/);
+  assert.match(component, /catch \{\s*setStatus\("error"\);\s*setTurnstileResetSignal/);
 });
 
 test("serves every Phase 1 route directly", async () => {
