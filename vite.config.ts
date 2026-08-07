@@ -56,7 +56,10 @@ export default defineConfig(async ({ mode }) => {
           vars:
             mode === "development"
               ? { TURNSTILE_SECRET_KEY: TURNSTILE_LOCAL_TEST_SECRET }
-              : {},
+              : {
+                  TURNSTILE_EXPECTED_HOSTNAME:
+                    "dear-villa-website.zilongluck.workers.dev",
+                },
           observability: { enabled: true },
         },
       }),
