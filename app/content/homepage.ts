@@ -14,6 +14,21 @@ import galleryTelescope from "../../assets/images/interiors/telescope-01.avif";
 import galleryPiano from "../../assets/images/interiors/piano-and-fireplace-01.avif";
 import galleryTerrace from "../../assets/images/exterior/garden-patio-table-01.avif";
 
+export const homepageVisibility = {
+  events: {
+    links: false,
+  },
+  accommodation: {
+    additionalLinks: false,
+  },
+  experiences: {
+    cta: false,
+  },
+  gallery: {
+    cta: false,
+  },
+} as const;
+
 export const homepageImages = {
   hero: {
     src: hero.src,

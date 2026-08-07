@@ -63,7 +63,7 @@ test("provides matching English and Simplified Chinese About translations", asyn
   assert.equal(instance.t("aboutPage.hero.title"), "A Private Estate in the Heart of Whitford");
   assert.equal(instance.t("aboutPage.final.secondary"), "Contact Us");
   await instance.changeLanguage("zh-CN");
-  assert.equal(instance.t("aboutPage.hero.title"), "隐逸于 Whitford 的庄园生活");
+  assert.equal(instance.t("aboutPage.hero.title"), "闹中取静的庄园生活");
   assert.equal(instance.t("aboutPage.final.secondary"), "联系我们");
 });
 
@@ -111,6 +111,19 @@ test("serves every Phase 1 route directly", async () => {
     const response = await render(route);
     assert.equal(response.status, 200, `${route} should return 200`);
   }
+});
+
+test("renders the visible Private Dining launch sections and keeps future sections out of the DOM", async () => {
+  const response = await render("/experiences/private-dining");
+  const html = await response.text();
+
+  assert.equal(response.status, 200);
+  assert.match(html, /Private Dining/);
+  assert.match(html, /Gather Around the Table/);
+  assert.match(html, /Every Gathering Begins with a Table/);
+  assert.doesNotMatch(html, /Moments Around the Table/);
+  assert.doesNotMatch(html, /A Table Prepared for You/);
+  assert.doesNotMatch(html, /privateDining\.[a-zA-Z0-9_.]+/);
 });
 
 test("keeps Membership disabled in reusable navigation configuration", async () => {
@@ -168,6 +181,28 @@ test("renders the accessible manual homepage gallery carousel", async () => {
   assert.match(carousel, /event\.key === "ArrowRight"/);
   assert.match(carousel, /onTouchStart/);
   assert.match(carousel, /onTouchEnd/);
+});
+
+test("does not expose placeholder routes through visible page links", async () => {
+  const routes = [
+    "/",
+    "/about",
+    "/accommodation",
+    "/experiences/tea-room",
+    "/experiences/private-dining",
+    "/international-programs",
+    "/contact",
+  ];
+
+  for (const route of routes) {
+    const response = await render(route);
+    const html = await response.text();
+
+    assert.doesNotMatch(html, /href="\/experiences"/);
+    assert.doesNotMatch(html, /href="\/about\/gallery"/);
+    assert.match(html, /href="\/experiences\/tea-room"/);
+    assert.match(html, /href="\/experiences\/private-dining"/);
+  }
 });
 
 test("provides English and Simplified Chinese navigation labels", async () => {

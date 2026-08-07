@@ -4,7 +4,7 @@
 
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { homepageImages } from "../content/homepage";
+import { homepageImages, homepageVisibility } from "../content/homepage";
 import { visibleNavigationItems } from "../navigation/config";
 import { EstateCarousel } from "./EstateCarousel";
 
@@ -168,14 +168,16 @@ function EventsPreview() {
           titleKey="homepage.events.title"
           introKey="homepage.events.body"
         />
-        <div className="events-preview-links">
-          <TextLink href="/events/weddings">
-            {t("homepage.events.weddings")}
-          </TextLink>
-          <TextLink href="/events/corporate">
-            {t("homepage.events.corporate")}
-          </TextLink>
-        </div>
+        {homepageVisibility.events.links && (
+          <div className="events-preview-links">
+            <TextLink href="/events/weddings">
+              {t("homepage.events.weddings")}
+            </TextLink>
+            <TextLink href="/events/corporate">
+              {t("homepage.events.corporate")}
+            </TextLink>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -198,9 +200,11 @@ function ExperiencesPreview() {
         <p className="section-eyebrow">{t("homepage.experiences.eyebrow")}</p>
         <h2>{t("homepage.experiences.title")}</h2>
         <p>{t("homepage.experiences.body")}</p>
-        <TextLink href="/experiences" light>
-          {t("homepage.experiences.cta")}
-        </TextLink>
+        {homepageVisibility.experiences.cta && (
+          <TextLink href="/experiences" light>
+            {t("homepage.experiences.cta")}
+          </TextLink>
+        )}
       </div>
     </section>
   );
@@ -269,7 +273,9 @@ function GalleryPreview() {
           titleKey="homepage.gallery.title"
           introKey="homepage.gallery.body"
         />
-        <TextLink href="/about/gallery">{t("homepage.gallery.cta")}</TextLink>
+        {homepageVisibility.gallery.cta && (
+          <TextLink href="/about/gallery">{t("homepage.gallery.cta")}</TextLink>
+        )}
       </div>
       <EstateCarousel
         images={homepageImages.gallery}
@@ -306,9 +312,9 @@ function ContactCta() {
 
 export function Footer() {
   const { t } = useTranslation();
-  const footerItems = visibleNavigationItems().filter(
-    (item) => item.id !== "home",
-  );
+  const footerItems = visibleNavigationItems()
+    .filter((item) => item.id !== "home")
+    .flatMap((item) => item.children?.length ? item.children : [item]);
 
   return (
     <footer className="site-footer">
@@ -363,16 +369,20 @@ export function Homepage() {
           bodyKey="homepage.accommodation.body"
           ctaKey="homepage.accommodation.cta"
           href="/accommodation"
-          additionalLinks={[
-            {
-              labelKey: "homepage.accommodation.boutiqueStay",
-              href: "/accommodation/boutique-stay",
-            },
-            {
-              labelKey: "homepage.accommodation.healingRetreat",
-              href: "/accommodation/healing-retreat",
-            },
-          ]}
+          additionalLinks={
+            homepageVisibility.accommodation.additionalLinks
+              ? [
+                  {
+                    labelKey: "homepage.accommodation.boutiqueStay",
+                    href: "/accommodation/boutique-stay",
+                  },
+                  {
+                    labelKey: "homepage.accommodation.healingRetreat",
+                    href: "/accommodation/healing-retreat",
+                  },
+                ]
+              : []
+          }
         />
         <ExperiencesPreview />
         <HospitalityPreview />

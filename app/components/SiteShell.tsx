@@ -15,6 +15,7 @@ import { Homepage } from "./Homepage";
 import { InternationalProgramsPage } from "./InternationalProgramsPage";
 import { ContactPage } from "./ContactPage";
 import { TeaRoomPage } from "./TeaRoomPage";
+import { PrivateDiningPage } from "./PrivateDiningPage";
 
 const isActiveRoute = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -351,6 +352,8 @@ export function SiteShell() {
         <AccommodationPage />
       ) : pathname === "/experiences/tea-room" ? (
         <TeaRoomPage />
+      ) : pathname === "/experiences/private-dining" ? (
+        <PrivateDiningPage />
       ) : pathname === "/international-programs" ? (
         <InternationalProgramsPage />
       ) : pathname === "/contact" ? (

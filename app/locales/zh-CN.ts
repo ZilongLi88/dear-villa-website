@@ -218,7 +218,7 @@ export const zhCN = {
       },
     },
     aboutPage: {
-      hero: { eyebrow: "关于 DEAR VILLA", title: "隐逸于 Whitford 的庄园生活", body: "距离奥克兰市区仅约三十分钟车程，Dear Villa 将自然风光、温暖待客之道与丰富的生活体验融为一体，为每一位来访者打造宁静而难忘的庄园时光。", cta: "探索庄园" },
+      hero: { eyebrow: "关于 DEAR VILLA", title: "闹中取静的庄园生活", body: "距离奥克兰市区仅约三十分钟车程，Dear Villa 将自然风光、温暖待客之道与丰富的生活体验融为一体，为每一位来访者打造宁静而难忘的庄园时光。", cta: "探索庄园" },
       welcome: { title: "欢迎来到 Dear Villa", body1: "Dear Villa 坐落于宁静的 Whitford 乡间，是一座融合自然、人文与生活方式体验的精品庄园。", body2: "宽阔的草坪、成熟的园林与舒适雅致的空间，共同营造出轻松自在的氛围。无论是周末度假、家庭聚会、私人庆典、企业活动，还是文化交流，都能在这里找到属于自己的美好时光。" },
       slowDown: { title: "放慢脚步，享受当下", body1: "在 Dear Villa，每一处空间都希望让人放慢节奏，重新感受生活。", body2: "清晨品一杯好茶，在泳池旁静静放松，漫步花园，或只是静静欣赏乡间风景，每一次停留都值得细细品味。", body3: "无论是短暂停留，还是悠闲度假，这里都希望为每位来宾留下温暖而珍贵的回忆。" },
       occasions: {
@@ -232,6 +232,14 @@ export const zhCN = {
       vision: { title: "我们的愿景", body1: "Dear Villa 不仅仅是一处目的地，更是一处让人与自然、人与家人、人与朋友重新建立连接的空间。", body2: "我们希望每一位来到这里的客人，都能在宁静的乡野之间，收获放松、喜悦与值得珍藏的回忆。", body3: "期待以真诚的待客之道，迎接每一位远道而来的朋友。" },
       final: { title: "期待与您相遇", body: "无论您计划一次悠闲度假、一场特别的庆典，还是一次轻松的下午时光，Dear Villa 都期待与您相见。", primary: "查看住宿", secondary: "联系我们" },
       images: { hero: "Dear Villa 主建筑、泳池与周边草坪的航拍景观", welcome: "Dear Villa 客厅内舒适座椅、温暖木地板与花园光线", slowDown: "Dear Villa 花园景观前精心布置的茶桌与茶器", accommodation: "通向宁静花园景观的 Dear Villa 客房", events: "拥有宽阔岛台与花园景观的 Dear Villa 厨房", tea: "悬于 Dear Villa 茶席上方的煮水壶", privateDining: "Dear Villa 私宴餐桌上精心布置的餐具与席位", estate: "主建筑、露台与花园环绕的 Dear Villa 泳池", vision: "Dear Villa 温暖室内陈设中的唱片机与黑胶唱片", closing: "Dear Villa 庄园下方平静海湾中停泊的帆船" },
+    },
+    privateDining: {
+      hero: { title: "私宴体验", body: "围坐于精心布置的餐桌前，在美食、交流与欢聚之间，共享值得珍藏的美好时光。", cta: "咨询私宴体验" },
+      introduction: { title: "围桌而坐，共享美好", body1: "每一次相聚，都值得拥有一张精心准备的餐桌。", body2: "无论是家庭聚会、亲友相聚，还是值得纪念的重要时刻，Dear Villa 都希望用温暖的空间与细致的款待，让每一次用餐都成为难忘的回忆。" },
+      moments: { title: "餐桌旁的相聚时光", moment1: "每一次相聚，都始于一份用心准备。", moment2: "最温暖的交流，往往发生在餐桌之间。", moment3: "值得珍藏的回忆，总是在相聚时悄然发生。" },
+      prepared: { title: "为每一次相聚做好准备", body: "无论是庆祝重要时刻、共享温馨家宴，还是与好友相聚，我们都期待在 Dear Villa 与您围桌而坐，共享美好时光。", cta: "咨询私宴体验" },
+      cta: { title: "每一次相聚，都从一张餐桌开始", body: "期待与您在 Dear Villa 相聚，在宁静优雅的庄园环境中，共享一段值得珍藏的美好时光。", button: "联系我们" },
+      images: { hero: "Dear Villa 温暖明亮的私宴餐桌与精心布置的席位", introduction: "来宾在 Dear Villa 花园与泳池景观前共享美食与红酒", moment1: "为共享用餐做好准备的 Dear Villa 厨房炉灶与操作区", moment2: "整齐陈列于 Dear Villa 餐厅柜中的玻璃杯具", moment3: "阳光下设有木质座椅、静候来宾的 Dear Villa 厨房岛台", closing: "明亮宽敞的 Dear Villa 厨房与中央岛台全景" },
     },
     internationalProgramsPage: {
       title: "国际合作项目",
