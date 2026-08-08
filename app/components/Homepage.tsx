@@ -120,13 +120,16 @@ function HomepageHero() {
 
   return (
     <section className="home-hero" aria-labelledby="home-hero-title">
-      <img
-        src={image.src}
-        alt={t(image.altKey)}
-        className="home-hero-image"
-        style={{ objectPosition: image.position }}
-        fetchPriority="high"
-      />
+      <picture className="hero-picture">
+        <source media="(max-width: 620px)" srcSet={image.mobileSrc} />
+        <img
+          src={image.src}
+          alt={t(image.altKey)}
+          className="home-hero-image"
+          style={{ objectPosition: image.position }}
+          fetchPriority="high"
+        />
+      </picture>
       <div className="home-hero-overlay" />
       <div className="home-hero-content">
         <p className="hero-eyebrow">{t("homepage.hero.eyebrow")}</p>

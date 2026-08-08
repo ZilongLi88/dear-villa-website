@@ -1,4 +1,5 @@
 import hero from "../../assets/images/exterior/aerial-pool-view-01.avif";
+import heroMobile from "../../assets/images/exterior/aerial-estate-pool-mobile-01.avif";
 import welcome from "../../assets/images/interiors/living-room-seating-01.avif";
 import slowDown from "../../assets/images/tea-room/tea-table-setup-01.avif";
 import accommodation from "../../assets/images/accommodation/bedroom-garden-view-03.avif";
@@ -9,10 +10,10 @@ import estate from "../../assets/images/exterior/swimming-pool-view-02.avif";
 import vision from "../../assets/images/interiors/record-player-01.avif";
 import closing from "../../assets/images/exterior/harbour-sailboats-01.avif";
 
-export type AboutImage = { src: string; altKey: string; position?: string };
+export type AboutImage = { src: string; mobileSrc?: string; altKey: string; position?: string };
 
 export const aboutImages = {
-  hero: { src: hero.src, altKey: "aboutPage.images.hero", position: "center 44%" },
+  hero: { src: hero.src, mobileSrc: heroMobile.src, altKey: "aboutPage.images.hero", position: "center 44%" },
   welcome: { src: welcome.src, altKey: "aboutPage.images.welcome" },
   slowDown: { src: slowDown.src, altKey: "aboutPage.images.slowDown" },
   accommodation: { src: accommodation.src, altKey: "aboutPage.images.accommodation" },

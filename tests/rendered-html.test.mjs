@@ -205,6 +205,25 @@ test("does not expose placeholder routes through visible page links", async () =
   }
 });
 
+test("provides mobile-only hero sources without replacing desktop hero fallbacks", async () => {
+  const pages = [
+    ["/", "aerial-estate-overhead-mobile-01.avif", "aerial-estate-hero-01.avif"],
+    ["/about", "aerial-estate-pool-mobile-01.avif", "aerial-pool-view-01.avif"],
+    ["/contact", "contact-hero-mobile-01.avif", "swimming-pool-view-02.avif"],
+    ["/experiences/tea-room", "tearoom-hero-mobile.avif", "hanging-kettle-tea-table-01.avif"],
+  ];
+
+  for (const [route, mobileImage, desktopImage] of pages) {
+    const response = await render(route);
+    const html = await response.text();
+
+    const mobileStem = mobileImage.replace(/\.avif$/, "");
+    const desktopStem = desktopImage.replace(/\.avif$/, "");
+    assert.match(html, new RegExp(`<source media="\\(max-width: 620px\\)" srcSet="[^"]*${mobileStem}[^"]*\\.avif"`));
+    assert.match(html, new RegExp(`<img[^>]+src="[^"]*${desktopStem}[^"]*\\.avif"`));
+  }
+});
+
 test("provides English and Simplified Chinese navigation labels", async () => {
   const [english, chinese] = await Promise.all([
     readFile(new URL("../app/locales/en.ts", import.meta.url), "utf8"),

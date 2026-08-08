@@ -337,7 +337,7 @@ export const en = {
         cta: "Experience the Tea Room",
       },
       images: {
-        hero: "Hanging kettle above a tea table in the quiet Dear Villa Tea Room",
+        hero: "A quiet tea setting in the Dear Villa Tea Room",
         introduction: "The Dear Villa Tea Room opening onto a peaceful garden view",
         moment1: "Tea host pouring tea during an intimate gathering at Dear Villa",
         moment2: "A considered tea table setting prepared for shared conversation",

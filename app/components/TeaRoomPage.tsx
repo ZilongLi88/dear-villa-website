@@ -13,7 +13,10 @@ export function TeaRoomPage() {
     <>
       <main className="tea-room-page" id="main-content">
         <section className="tea-hero" aria-labelledby="tea-room-title">
-          <img src={teaRoomImages.hero.src} alt={t(teaRoomImages.hero.altKey)} fetchPriority="high" />
+          <picture className="hero-picture">
+            <source media="(max-width: 620px)" srcSet={teaRoomImages.hero.mobileSrc} />
+            <img src={teaRoomImages.hero.src} alt={t(teaRoomImages.hero.altKey)} fetchPriority="high" />
+          </picture>
           <div className="tea-hero-overlay" />
           <div className="tea-hero-content">
             <h1 id="tea-room-title">{t("teaRoom.hero.title")}</h1>

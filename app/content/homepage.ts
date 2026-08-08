@@ -1,4 +1,5 @@
 import hero from "../../assets/images/exterior/aerial-estate-hero-01.avif";
+import heroMobile from "../../assets/images/exterior/aerial-estate-overhead-mobile-01.avif";
 import about from "../../assets/images/exterior/garden-pond-and-estate-01.avif";
 import events from "../../assets/images/exterior/aerial-pool-view-01.avif";
 import internationalPrograms from "../../assets/images/exterior/garden-harbour-view-01.avif";
@@ -32,6 +33,7 @@ export const homepageVisibility = {
 export const homepageImages = {
   hero: {
     src: hero.src,
+    mobileSrc: heroMobile.src,
     altKey: "homepage.images.hero",
     position: "center center",
   },

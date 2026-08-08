@@ -319,6 +319,9 @@ export function SiteShell() {
           <span>Dear Villa</span>
           <small>Estate</small>
         </Link>
+        <div className="mobile-header-language">
+          <LanguageSwitch />
+        </div>
         <DesktopNavigation items={items} pathname={pathname} />
         <div className="header-actions">
           <LanguageSwitch />

@@ -1,7 +1,5 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-
 import { FormEvent, useCallback, useState, useSyncExternalStore } from "react";
 import { useTranslation } from "react-i18next";
 import { contactHero } from "../content/contact";
@@ -101,7 +99,10 @@ export function ContactPage() {
   return <>
     <main className="contact-page" id="main-content">
       <section className="contact-hero" aria-labelledby="contact-title">
-        <img src={contactHero.src} alt={t(contactHero.altKey)} fetchPriority="high" />
+        <picture className="hero-picture">
+          <source media="(max-width: 620px)" srcSet={contactHero.mobileSrc} />
+          <img src={contactHero.src} alt={t(contactHero.altKey)} fetchPriority="high" />
+        </picture>
         <div className="contact-hero-overlay" />
         <h1 id="contact-title">{t("contactPage.title")}</h1>
       </section>

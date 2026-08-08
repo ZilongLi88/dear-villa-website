@@ -1,4 +1,5 @@
 import hero from "../../assets/images/tea-room/hanging-kettle-tea-table-01.avif";
+import heroMobile from "../../assets/images/tea-room/tearoom-hero-mobile.avif";
 import introduction from "../../assets/images/tea-room/room-garden-view-01.avif";
 import momentOne from "../../assets/images/tea-room/tea-host-pouring-01.avif";
 import momentTwo from "../../assets/images/tea-room/tea-table-setup-01.avif";
@@ -8,7 +9,7 @@ import momentFive from "../../assets/images/tea-room/tea-room-garden-view-01.avi
 import closing from "../../assets/images/tea-room/tea-table-detail-01.avif";
 
 export const teaRoomImages = {
-  hero: { src: hero.src, altKey: "teaRoom.images.hero" },
+  hero: { src: hero.src, mobileSrc: heroMobile.src, altKey: "teaRoom.images.hero" },
   introduction: { src: introduction.src, altKey: "teaRoom.images.introduction" },
   closing: { src: closing.src, altKey: "teaRoom.images.closing" },
 };

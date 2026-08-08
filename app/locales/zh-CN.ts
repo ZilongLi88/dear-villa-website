@@ -320,7 +320,7 @@ export const zhCN = {
         cta: "预约茶室体验",
       },
       images: {
-        hero: "Dear Villa 静谧茶室中悬于茶桌上方的煮水壶",
+        hero: "Dear Villa 茶室中的静谧茶席",
         introduction: "望向宁静花园景观的 Dear Villa 茶室",
         moment1: "Dear Villa 茶席上茶艺师为来宾斟茶",
         moment2: "为相聚交谈而细心准备的茶席",

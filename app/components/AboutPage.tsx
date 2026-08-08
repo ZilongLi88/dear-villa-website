@@ -46,7 +46,10 @@ export function AboutPage() {
   return <>
     <main className="about-page about-page-complete" id="main-content">
       <section className="about-hero" aria-labelledby="about-title">
-        <img src={aboutImages.hero.src} alt={t(aboutImages.hero.altKey)} style={{ objectPosition: aboutImages.hero.position }} fetchPriority="high" />
+        <picture className="hero-picture">
+          <source media="(max-width: 620px)" srcSet={aboutImages.hero.mobileSrc} />
+          <img src={aboutImages.hero.src} alt={t(aboutImages.hero.altKey)} style={{ objectPosition: aboutImages.hero.position }} fetchPriority="high" />
+        </picture>
         <div className="about-hero-overlay" />
         <div className="about-hero-content">
           <p className="section-eyebrow">{t("aboutPage.hero.eyebrow")}</p>
