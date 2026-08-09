@@ -1,6 +1,6 @@
 import hero from "../../assets/images/exterior/aerial-estate-hero-01.avif";
 import heroMobile from "../../assets/images/exterior/aerial-estate-overhead-mobile-01.avif";
-import about from "../../assets/images/exterior/garden-pond-and-estate-01.avif";
+import about from "../../assets/images/exterior/garden-harbour-view-01.avif";
 import events from "../../assets/images/exterior/aerial-pool-view-01.avif";
 import internationalPrograms from "../../assets/images/exterior/garden-harbour-view-01.avif";
 import accommodation from "../../assets/images/interiors/living-room-wide-01.avif";

@@ -41,8 +41,7 @@ export const en = {
       hero: {
         eyebrow: "A private estate by the water",
         title: "A place to gather, breathe, and belong",
-        description:
-          "Discover a secluded Auckland estate shaped by gardens, generous hospitality, and unforgettable views.",
+        description: "A secluded estate. Timeless hospitality.",
         primaryCta: "Plan Your Visit",
         secondaryCta: "Explore the Estate",
         scroll: "Discover",
@@ -131,7 +130,7 @@ export const en = {
       },
       images: {
         hero: "Aerial view of Dear Villa estate, gardens, and surrounding water",
-        about: "Dear Villa residence beyond a garden pond and open lawn",
+        about: "Dear Villa gardens opening toward the harbour and distant island",
         events: "Aerial view of the Dear Villa residence, pool, and garden",
         internationalPrograms:
           "Dear Villa gardens opening toward the harbour and distant island",
@@ -232,7 +231,7 @@ export const en = {
       },
     },
     aboutPage: {
-      hero: { eyebrow: "ABOUT DEAR VILLA", title: "A Private Estate in the Heart of Whitford", body: "Just a short drive from Auckland, Dear Villa offers an elegant countryside retreat where nature, hospitality, and meaningful experiences come together.", cta: "Explore the Estate" },
+      hero: { eyebrow: "ABOUT DEAR VILLA", title: "A Private Estate in the Heart of Whitford", body: "Just outside Auckland, a secluded countryside retreat.", cta: "Explore the Estate" },
       welcome: { title: "Welcome to Dear Villa", body1: "Nestled in the peaceful countryside of Whitford, Dear Villa is a boutique lifestyle estate designed for guests seeking space, privacy, and authentic experiences.", body2: "Surrounded by expansive lawns and mature gardens, the estate provides a welcoming setting for weekend escapes, family gatherings, private celebrations, corporate retreats, and cultural experiences." },
       slowDown: { title: "A Place to Slow Down", body1: "Every corner of Dear Villa encourages guests to slow down and reconnect.", body2: "Enjoy a quiet morning tea, relax beside the pool, stroll through open gardens, or simply appreciate the calm of the surrounding landscape.", body3: "Whether you stay for a night or spend an afternoon with friends, the estate is designed to create memorable moments." },
       occasions: {

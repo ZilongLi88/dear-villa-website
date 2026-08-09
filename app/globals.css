@@ -618,7 +618,8 @@ a {
   background: #174f41;
 }
 
-.button-secondary-light {
+.button-secondary-light,
+.home-hero .button-primary {
   border-color: rgba(255, 255, 255, 0.72);
   background: rgba(255, 255, 255, 0.04);
   color: white;
@@ -626,7 +627,9 @@ a {
 }
 
 .button-secondary-light:hover,
-.button-secondary-light:focus-visible {
+.button-secondary-light:focus-visible,
+.home-hero .button-primary:hover,
+.home-hero .button-primary:focus-visible {
   background: white;
   color: var(--forest-deep);
 }
@@ -1886,6 +1889,7 @@ a {
 @media (max-width: 620px) {
   .accommodation-hero { min-height: 690px; }
   .accommodation-hero > img { object-position: 58% center; }
+  .accommodation-hero h1 { font-size: clamp(1.85rem, 8.4vw, 2.55rem); }
   .photo-story { grid-template-columns: 1fr; gap: 28px; }
   .photo-story-item.is-feature { grid-column: auto; }
   .amenities ul { grid-template-columns: 1fr; }
@@ -2016,7 +2020,7 @@ a {
   .international-programs-page { min-height: 780px; padding-top: 72px; padding-bottom: 72px; align-items: end; }
   .international-programs-page > img { object-position: 65% center; }
   .international-programs-overlay { background: linear-gradient(0deg, rgba(8, 30, 24, 0.84) 0%, rgba(8, 30, 24, 0.5) 62%, rgba(8, 30, 24, 0.12) 100%); }
-  .international-programs-content h1 { font-size: clamp(2.9rem, 13vw, 4.2rem); }
+  .international-programs-content h1 { font-size: clamp(1.85rem, 8.4vw, 2.55rem); }
   .international-programs-copy { margin-top: 26px; }
   .international-programs-copy p { line-height: 1.7; }
 }
@@ -2104,7 +2108,7 @@ a {
   .dining-hero{min-height:76svh}
   .dining-hero>img{object-position:54% center}
   .dining-hero-content{padding-bottom:72px}
-  .dining-hero h1{font-size:clamp(2.8rem,13vw,4.2rem)}
+  .dining-hero h1{font-size:clamp(1.85rem,8.4vw,2.55rem)}
   .dining-introduction,.dining-moments,.dining-prepared{padding-top:92px;padding-bottom:92px}
   .dining-introduction{gap:40px}
   .dining-introduction figure{width:calc(100% + var(--page-gutter))}

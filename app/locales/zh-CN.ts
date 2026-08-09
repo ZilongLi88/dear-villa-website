@@ -40,8 +40,7 @@ export const zhCN = {
       hero: {
         eyebrow: "临水而居的私人庄园",
         title: "在这里相聚，舒展，感受归属",
-        description:
-          "探索这座静谧的奥克兰庄园，在花园、宽阔水景与温暖款待之间，留下值得珍藏的时光。",
+        description: "远离喧嚣，静享庄园时光。",
         primaryCta: "预约到访",
         secondaryCta: "探索庄园",
         scroll: "向下探索",
@@ -127,7 +126,7 @@ export const zhCN = {
       },
       images: {
         hero: "Dear Villa 庄园、花园与周边水景的航拍全景",
-        about: "花园池塘与开阔草坪后方的 Dear Villa 主建筑",
+        about: "通向海湾与远方岛屿的 Dear Villa 花园景观",
         events: "Dear Villa 主建筑、泳池与花园的航拍景观",
         internationalPrograms: "通向海湾与远方岛屿的 Dear Villa 花园景观",
         accommodation: "拥有木地板与花园门窗的明亮庄园客厅",
@@ -218,7 +217,7 @@ export const zhCN = {
       },
     },
     aboutPage: {
-      hero: { eyebrow: "关于 DEAR VILLA", title: "闹中取静的庄园生活", body: "距离奥克兰市区仅约三十分钟车程，Dear Villa 将自然风光、温暖待客之道与丰富的生活体验融为一体，为每一位来访者打造宁静而难忘的庄园时光。", cta: "探索庄园" },
+      hero: { eyebrow: "关于 DEAR VILLA", title: "闹中取静的庄园生活", body: "距奥克兰仅一程之遥，一处静谧庄园。", cta: "探索庄园" },
       welcome: { title: "欢迎来到 Dear Villa", body1: "Dear Villa 坐落于宁静的 Whitford 乡间，是一座融合自然、人文与生活方式体验的精品庄园。", body2: "宽阔的草坪、成熟的园林与舒适雅致的空间，共同营造出轻松自在的氛围。无论是周末度假、家庭聚会、私人庆典、企业活动，还是文化交流，都能在这里找到属于自己的美好时光。" },
       slowDown: { title: "放慢脚步，享受当下", body1: "在 Dear Villa，每一处空间都希望让人放慢节奏，重新感受生活。", body2: "清晨品一杯好茶，在泳池旁静静放松，漫步花园，或只是静静欣赏乡间风景，每一次停留都值得细细品味。", body3: "无论是短暂停留，还是悠闲度假，这里都希望为每位来宾留下温暖而珍贵的回忆。" },
       occasions: {
