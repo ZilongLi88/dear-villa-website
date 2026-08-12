@@ -3,11 +3,30 @@ import { defineConfig } from "vite";
 import { sites } from "./build/sites-vite-plugin";
 
 const TURNSTILE_LOCAL_TEST_SECRET = "1x0000000000000000000000000000000AA";
+const TURNSTILE_LOCAL_TEST_SITE_KEY = "1x00000000000000000000AA";
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 
 export default defineConfig(async ({ mode }) => {
+  const configuredTurnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim();
+
+  if (
+    mode === "production" &&
+    (!configuredTurnstileSiteKey || configuredTurnstileSiteKey === TURNSTILE_LOCAL_TEST_SITE_KEY)
+  ) {
+    throw new Error(
+      "Production build requires NEXT_PUBLIC_TURNSTILE_SITE_KEY to be set to a production Cloudflare Turnstile Site Key.",
+    );
+  }
+
+  // Vite does not expose NEXT_PUBLIC_* variables automatically. Define this
+  // exact expression so the public Site Key is embedded in the client bundle.
+  // Local development deliberately uses Cloudflare's official localhost key.
+  const turnstileSiteKey = mode === "production"
+    ? configuredTurnstileSiteKey
+    : TURNSTILE_LOCAL_TEST_SITE_KEY;
+
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";
@@ -18,6 +37,9 @@ export default defineConfig(async ({ mode }) => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    define: {
+      "process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY": JSON.stringify(turnstileSiteKey),
+    },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
