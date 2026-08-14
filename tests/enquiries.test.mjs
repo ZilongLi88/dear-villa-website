@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createEnquiryPostHandler } from "../app/api/enquiries/handler.ts";
+import { createEnquiryPostHandler, verifyTurnstile } from "../app/api/enquiries/handler.ts";
 
 const validPayload = (overrides = {}) => ({
   fullName: "Browser Test",
@@ -103,4 +103,39 @@ test("rejects oversized payloads before parsing", async () => {
     request(validPayload({ message: "x".repeat(17 * 1024) })),
   );
   assert.equal(response.status, 413);
+});
+
+test("accepts Turnstile verification from every approved production hostname", async () => {
+  const expectedHostnames = [
+    "www.dearvilla.com",
+    "dearvilla.com",
+    "dear-villa-website.zilongluck.workers.dev",
+  ];
+
+  for (const hostname of expectedHostnames) {
+    const verified = await verifyTurnstile("test-token", {
+      secret: "test-secret",
+      expectedHostnames,
+      fetchImpl: async () => Response.json({
+        success: true,
+        action: "contact_enquiry",
+        hostname,
+      }),
+    });
+    assert.equal(verified, true, `${hostname} should be accepted`);
+  }
+});
+
+test("rejects Turnstile verification from a hostname outside the production allowlist", async () => {
+  const verified = await verifyTurnstile("test-token", {
+    secret: "test-secret",
+    expectedHostnames: ["www.dearvilla.com", "dearvilla.com"],
+    fetchImpl: async () => Response.json({
+      success: true,
+      action: "contact_enquiry",
+      hostname: "untrusted.example.com",
+    }),
+  });
+
+  assert.equal(verified, false);
 });

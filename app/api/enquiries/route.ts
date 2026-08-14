@@ -10,8 +10,16 @@ export async function POST(request: Request) {
     const { env } = await import("cloudflare:workers");
     const secret = env.TURNSTILE_SECRET_KEY;
     const isLocalRequest = LOCAL_HOSTNAMES.has(new URL(request.url).hostname);
-    if (!secret || (secret === TURNSTILE_LOCAL_TEST_SECRET && !isLocalRequest)) {
-      console.error("Turnstile secret is unavailable");
+    const expectedHostnames = env.TURNSTILE_EXPECTED_HOSTNAMES
+      ?.split(",")
+      .map((hostname) => hostname.trim().toLowerCase())
+      .filter(Boolean);
+    if (
+      !secret ||
+      (secret === TURNSTILE_LOCAL_TEST_SECRET && !isLocalRequest) ||
+      (!isLocalRequest && !expectedHostnames?.length)
+    ) {
+      console.error("Turnstile configuration is unavailable");
       return Response.json(
         { success: false, code: "service_unavailable", message: "Enquiry service is unavailable" },
         { status: 503 },
@@ -26,7 +34,7 @@ export async function POST(request: Request) {
       verifyTurnstile: (token) =>
         verifyTurnstile(token, {
           secret,
-          expectedHostname: env.TURNSTILE_EXPECTED_HOSTNAME,
+          expectedHostnames: isLocalRequest ? undefined : expectedHostnames,
         }),
       insertEnquiry: async (values) => {
         const db = await getDb();

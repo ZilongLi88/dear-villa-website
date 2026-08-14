@@ -212,7 +212,7 @@ export function createEnquiryPostHandler(dependencies: HandlerDependencies) {
 
 export async function verifyTurnstile(
   token: string,
-  options: { secret: string; expectedHostname?: string; fetchImpl?: typeof fetch },
+  options: { secret: string; expectedHostnames?: readonly string[]; fetchImpl?: typeof fetch },
 ) {
   const response = await (options.fetchImpl ?? fetch)(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -234,6 +234,8 @@ export async function verifyTurnstile(
   return Boolean(
     result.success &&
       result.action === TURNSTILE_ACTION &&
-      (!options.expectedHostname || result.hostname === options.expectedHostname),
+      (!options.expectedHostnames ||
+        (typeof result.hostname === "string" &&
+          options.expectedHostnames.includes(result.hostname.toLowerCase()))),
   );
 }

@@ -53,6 +53,12 @@ export default defineConfig(async ({ mode }) => {
           main: "./worker/index.ts",
           compatibility_date: "2026-05-15",
           compatibility_flags: ["nodejs_compat"],
+          workers_dev: true,
+          preview_urls: true,
+          routes: [
+            { pattern: "dearvilla.com", custom_domain: true },
+            { pattern: "www.dearvilla.com", custom_domain: true },
+          ],
           assets: {
             directory: "dist/client",
             not_found_handling: "none",
@@ -79,8 +85,8 @@ export default defineConfig(async ({ mode }) => {
             mode === "development"
               ? { TURNSTILE_SECRET_KEY: TURNSTILE_LOCAL_TEST_SECRET }
               : {
-                  TURNSTILE_EXPECTED_HOSTNAME:
-                    "dear-villa-website.zilongluck.workers.dev",
+                  TURNSTILE_EXPECTED_HOSTNAMES:
+                    "www.dearvilla.com,dearvilla.com,dear-villa-website.zilongluck.workers.dev",
                 },
           observability: { enabled: true },
         },
