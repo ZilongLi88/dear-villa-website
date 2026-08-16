@@ -87,6 +87,7 @@ export default defineConfig(async ({ mode }) => {
               : {
                   TURNSTILE_EXPECTED_HOSTNAMES:
                     "www.dearvilla.com,dearvilla.com,dear-villa-website.zilongluck.workers.dev",
+                  ENQUIRY_NOTIFICATION_EMAIL: "dearvillaestate@gmail.com",
                 },
           observability: { enabled: true },
         },

@@ -70,6 +70,7 @@ export function ContactPage() {
           preferredDate: String(data.get("preferredDate") ?? ""),
           guests: String(data.get("guests") ?? ""),
           message: String(data.get("message") ?? "").trim(),
+          language: i18n.language === "zh-CN" ? "zh-CN" : "en",
           turnstileToken,
         }),
       });

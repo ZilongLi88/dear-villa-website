@@ -2,6 +2,8 @@ interface __BaseEnv_Env {
   CONTACT_RATE_LIMITER: RateLimit;
   TURNSTILE_SECRET_KEY?: string;
   TURNSTILE_EXPECTED_HOSTNAMES?: string;
+  RESEND_API_KEY?: string;
+  ENQUIRY_NOTIFICATION_EMAIL?: string;
 }
 
 declare namespace Cloudflare {
@@ -9,5 +11,7 @@ declare namespace Cloudflare {
     CONTACT_RATE_LIMITER: RateLimit;
     TURNSTILE_SECRET_KEY?: string;
     TURNSTILE_EXPECTED_HOSTNAMES?: string;
+    RESEND_API_KEY?: string;
+    ENQUIRY_NOTIFICATION_EMAIL?: string;
   }
 }

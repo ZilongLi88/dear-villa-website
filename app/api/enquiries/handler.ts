@@ -10,6 +10,8 @@ export const ENQUIRY_TYPES = [
 ] as const;
 
 type EnquiryType = (typeof ENQUIRY_TYPES)[number];
+export const ENQUIRY_LANGUAGES = ["en", "zh-CN"] as const;
+export type EnquiryLanguage = (typeof ENQUIRY_LANGUAGES)[number];
 
 export type ValidEnquiry = {
   fullName: string;
@@ -25,10 +27,13 @@ type HandlerDependencies = {
   checkRateLimit(key: string): Promise<boolean>;
   verifyTurnstile(token: string): Promise<boolean>;
   insertEnquiry(enquiry: ValidEnquiry): Promise<void>;
+  notifyEnquiry(enquiry: ValidEnquiry, submittedAt: string): Promise<void>;
+  confirmCustomer(enquiry: ValidEnquiry, language: EnquiryLanguage): Promise<void>;
+  reportNotificationFailure(email: "admin" | "customer"): void;
 };
 
 type ValidationResult =
-  | { ok: true; enquiry: ValidEnquiry; turnstileToken: string }
+  | { ok: true; enquiry: ValidEnquiry; language: EnquiryLanguage; turnstileToken: string }
   | { ok: false; message: string };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -41,6 +46,7 @@ const ALLOWED_KEYS = new Set([
   "preferredDate",
   "guests",
   "message",
+  "language",
   "turnstileToken",
 ]);
 
@@ -127,13 +133,14 @@ export function validateEnquiryPayload(payload: unknown): ValidationResult {
   const fullName = requiredString(record.fullName, 100);
   const email = requiredString(record.email, 254);
   const enquiryType = requiredString(record.enquiryType, 40);
+  const language = requiredString(record.language, 5);
   const turnstileToken = requiredString(record.turnstileToken, 2048);
   const phone = optionalString(record.phone, 40);
   const preferredDate = optionalString(record.preferredDate, 10);
   const message = optionalString(record.message, 4000);
   const guests = parseGuests(record.guests);
 
-  if (!fullName || !email || !enquiryType) {
+  if (!fullName || !email || !enquiryType || !language) {
     return { ok: false, message: "Missing or invalid required fields" };
   }
   if (!EMAIL_PATTERN.test(email)) {
@@ -141,6 +148,9 @@ export function validateEnquiryPayload(payload: unknown): ValidationResult {
   }
   if (!ENQUIRY_TYPES.includes(enquiryType as EnquiryType)) {
     return { ok: false, message: "Invalid enquiry type" };
+  }
+  if (!ENQUIRY_LANGUAGES.includes(language as EnquiryLanguage)) {
+    return { ok: false, message: "Invalid language" };
   }
   if (!turnstileToken) {
     return { ok: false, message: "Turnstile verification is required" };
@@ -154,6 +164,7 @@ export function validateEnquiryPayload(payload: unknown): ValidationResult {
 
   return {
     ok: true,
+    language: language as EnquiryLanguage,
     turnstileToken,
     enquiry: {
       fullName,
@@ -202,7 +213,18 @@ export function createEnquiryPostHandler(dependencies: HandlerDependencies) {
       return jsonError(403, "turnstile_failed", "Security verification failed");
     }
 
+    const submittedAt = new Date().toISOString();
     await dependencies.insertEnquiry(validation.enquiry);
+    try {
+      await dependencies.notifyEnquiry(validation.enquiry, submittedAt);
+    } catch {
+      dependencies.reportNotificationFailure("admin");
+    }
+    try {
+      await dependencies.confirmCustomer(validation.enquiry, validation.language);
+    } catch {
+      dependencies.reportNotificationFailure("customer");
+    }
     return Response.json(
       { success: true, message: "Enquiry received" },
       { status: 201 },

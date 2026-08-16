@@ -1,6 +1,7 @@
 import { getDb } from "../../../db";
 import { enquiries } from "../../../db/schema";
 import { createEnquiryPostHandler, verifyTurnstile } from "./handler";
+import { sendCustomerConfirmation, sendEnquiryNotification } from "./notification";
 
 const TURNSTILE_LOCAL_TEST_SECRET = "1x0000000000000000000000000000000AA";
 const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
@@ -39,6 +40,20 @@ export async function POST(request: Request) {
       insertEnquiry: async (values) => {
         const db = await getDb();
         await db.insert(enquiries).values(values);
+      },
+      notifyEnquiry: (values, submittedAt) =>
+        sendEnquiryNotification(values, submittedAt, {
+          apiKey: env.RESEND_API_KEY,
+          recipient: env.ENQUIRY_NOTIFICATION_EMAIL,
+        }),
+      confirmCustomer: (values, language) =>
+        sendCustomerConfirmation(values, language, {
+          apiKey: env.RESEND_API_KEY,
+        }),
+      reportNotificationFailure: (email) => {
+        console.error(email === "admin"
+          ? "Enquiry notification email failed"
+          : "Customer confirmation email failed");
       },
     });
 
